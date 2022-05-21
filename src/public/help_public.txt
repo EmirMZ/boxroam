@@ -1,0 +1,2 @@
+1. berisi file file yang akan disajikan ke browser (html, css, javscript, png, dll)
+2. script nodejs jangan ditaruh disini

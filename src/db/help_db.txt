@@ -1,0 +1,3 @@
+1. berisi inisialisasi database (biar ngulang databasenya gampang)
+2. berisi koneksi database yang bisa dipakai oleh function yang di models
+3. init.sql berisi pembuatan tabel, dan sampel data jika perlu untuk tes

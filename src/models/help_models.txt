@@ -1,0 +1,3 @@
+1.ini berisi function2 yang akan mengakses database (SQL postgre)
+2.function2 ini akan dipanggil oleh controller
+3.berarti models akan menggunakan function db dari connection.js
