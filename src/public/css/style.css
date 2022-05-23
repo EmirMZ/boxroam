@@ -1,0 +1,48 @@
+body {
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+.container {
+  padding: 1rem 0rem;
+}
+
+@media (min-width: 576px) {
+  .modal-dialog {
+    max-width: 400px;
+  }
+  .modal-dialog .modal-content {
+    padding: 0.5rem;
+  }
+}
+.modal-header .close {
+  padding: 0.5rem;
+}
+
+.form-title {
+  margin: -2rem 0rem 2rem;
+}
+
+.btn-round {
+  border-radius: 3rem;
+}
+
+.delimiter {
+  padding: 1rem;
+}
+
+.social-buttons .btn {
+  margin: 0 0.5rem 1rem;
+}
+
+.signup-section {
+  padding: 0.3rem 0rem;
+}
+
+
+.btn-exit-font{
+font-size: 1.5rem;
+}
