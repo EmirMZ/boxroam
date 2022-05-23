@@ -7,6 +7,7 @@ const initPath = path.join(__dirname, "init.sql");
 const initSQL = fs.readFileSync(initPath, "utf-8");
 
 function build() {
+  console.log("disini");
   return db
     .query(initSQL)
     .then(() => {
