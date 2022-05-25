@@ -4,11 +4,17 @@ const dotenv = require("dotenv");
 
 dotenv.config(); // load environment variables
 
-//koneksi awal database
-let connectionString = process.env.DATABASE_URL;
 
-const db = new pg.Pool({
-  connectionString,
-});
 
+const config = {
+  host: process.env.DATABASE_HOST,
+  user: process.env.DATABASE_USER,     
+  password: process.env.DATABASE_PASS,
+  database: process.env.DATABASE_DB,
+  port: process.env.DATABASE_PORT,
+  ssl: true
+};
+
+const db = new pg.Pool(config);
+console.log('here')
 module.exports = db;

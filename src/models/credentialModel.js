@@ -1,7 +1,7 @@
 //semua panggilan ke database dengan konteks autentikasi user(login, logout, register) disini semua
 //getuser juga seharusnya disini juga
 //kalau untuk booking dan segala macam itu di file /models/xxx.js yang lain
-const db = require('../db')
+const db = require('../db/connection')
 const format = require('pg-format')
 
 exports.register = (req,hashedPassword) => {
