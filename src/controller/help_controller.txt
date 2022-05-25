@@ -1,3 +1,0 @@
-1.ini berisi function yang akan dipanggil oleh routes
-2.berarti function ini akan menggunakan function yang ada di models untuk
-  akses database

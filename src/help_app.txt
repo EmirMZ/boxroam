@@ -1,4 +1,0 @@
-1.menerima call dari bin/www lalu disalurkan ke routes
-2.bisa dibilang mirip seperti routes, tetapi dia yang menentukan ke page mana dari root (www.abc.com/)
-3.sementara routes yang menyediakan subpage (seperti www.abc.com/user/login atau www.abc.com/user/posts)
-4.kalau ada page lagi yang nempel dengan root ditambah disini dulu baru routenya

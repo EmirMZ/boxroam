@@ -23,3 +23,7 @@
 .dropdown-toggle {
   outline: 0;
 }
+
+.disp-hide {
+  display: none;
+}

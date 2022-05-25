@@ -1,8 +1,35 @@
 $(function() {
-    $("#includedContent").load("./modals/login.html #loginModal");
+    const slideFadeOut = (elem) => {
+        const fade = { opacity: 0, transition: 'opacity 400ms' };
+        elem.css(fade).slideUp();
+        };
+    const slideFadeIn = (elem) => {
+        const fade = { opacity: 1, transition: 'opacity 400ms' };
+        elem.css(fade).slideDown();
+        };    
+    
+    
+    if(window.location.pathname == '/'){
+        $("#includedContent").append($('<div>').load("./modals/login.html #loginModal"));
+    }
+    if(window.location.pathname == '/staff'){
+        $("#includedContent").append($('<div>').load("./modals/loginstaff.html #loginModal"));
+    }
+
+    
+
+    $(document).on("click",'input[type="email"]',(function() {
+        $('input[type="email"]').removeAttr('style');
+    }));
+
+    $(document).on("click",'input[type="password"]',(function() {
+        $('input[type="password"]').removeAttr('style'); 
+    }));
+
     $(document).on("click","button.login-submit",(function() {
         var email = $("#email").val();
         var password = $("#password").val();
+        var role = $("#role").val();
         // Checking for blank fields.
         if (email == '' || password == '') {
             if (email == '' ) {
@@ -13,40 +40,51 @@ $(function() {
                 $('input[type="text"],input[type="password"]').css("border", "2px solid red");
                 $('input[type="text"],input[type="password"]').css("box-shadow", "0 0 3px red");
             }
-            //alert("Please fill all fields...!!!!!!");
         } else {
-            $.post("/login", {
-                    email: email,
-                    password: password
-                },
-                function(data) {
-                    if (data == 'Invalid Email.......') {
-                        $('input[type="text"]').css({
-                            "border": "2px solid red",
-                            "box-shadow": "0 0 3px red"
-                        });
-                        $('input[type="password"]').css({
-                            "border": "2px solid #00F5FF",
-                            "box-shadow": "0 0 5px #00F5FF"
-                        });
-                        alert(data);
-                    } else if (data == 'Email or Password is wrong...!!!!') {
-                        $('input[type="text"],input[type="password"]').css({
-                            "border": "2px solid red",
-                            "box-shadow": "0 0 3px red"
-                        });
-                        alert(data);
-                    } else if (data == 'Successfully Logged in...') {
+            $.ajax({
+                type: "POST",
+                url: "/api/login",
+                data: JSON.stringify({                   
+                    "email": email,
+                    "password": password,
+                    "role": role
+                }),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function(data) {
+                    if (data.message == 'login_success') {
                         $("form")[0].reset();
                         $('input[type="text"],input[type="password"]').css({
                             "border": "2px solid #00F5FF",
                             "box-shadow": "0 0 5px #00F5FF"
                         });
-                        alert(data);
+
+                        slideFadeOut($(document.querySelectorAll('.login-modal-form')))
+                        slideFadeIn($(document.querySelector('.checkmark-login')))
+                        slideFadeOut($(document.querySelector('.authenticate-bar')))
+                        slideFadeIn($(document.querySelector('.logged-in-bar'))) 
+                        setTimeout(function() {$(document.querySelector('.login-modal')).modal('toggle')}, 3000);
+                        
+                        console.log(data);
                     } else {
-                        alert(data);
+                        console.log(data);
                     }
-                });
+                },
+                error: function(data) {
+                    
+                    if (data.responseJSON.errors[0].msg == 'login_fail_email') {
+                        $('input[type="email"]').css({
+                            "border": "2px solid red",
+                            "box-shadow": "0 0 3px red"
+                        });
+                    } else if (data.responseJSON.errors[0].msg == 'login_fail_pass') {
+                        $('input[type="password"]').css({
+                            "border": "2px solid red",
+                            "box-shadow": "0 0 3px red"
+                        }); 
+                    } 
+                }
+            })
         }
     }));
 });

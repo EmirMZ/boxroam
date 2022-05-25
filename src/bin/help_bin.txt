@@ -1,2 +1,0 @@
-1.berisi www untuk mulai nodejsnya
-2.tidak usah disentuh, dah selesai disini
