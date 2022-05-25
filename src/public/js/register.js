@@ -25,64 +25,64 @@ $(function() {
     }
 
     
-    $(document).on("click",'input[id="name"]',(function() {
-        $('input[id="name"]').removeAttr('style'); 
+    $(document).on("click",'input[id="register-name"]',(function() {
+        $('input[id="register-name"]').removeAttr('style'); 
     }));
 
-    $(document).on("click",'input[type="email"]',(function() {
-        $('input[type="email"]').removeAttr('style');
+    $(document).on("click",'input[type="register-email"]',(function() {
+        $('input[type="register-email"]').removeAttr('style');
     }));
 
-    $(document).on("click",'input[id="phoneNumber"]',(function() {
-        $('input[id="phoneNumber"]').removeAttr('style'); 
+    $(document).on("click",'input[id="register-phoneNumber"]',(function() {
+        $('input[id="register-phoneNumber"]').removeAttr('style'); 
     }));
 
-    $(document).on("click",'input[type="password"]',(function() {
-        $('input[type="password"]').removeAttr('style'); 
+    $(document).on("click",'input[type="register-password"]',(function() {
+        $('input[type="register-password"]').removeAttr('style'); 
     }));
 
-    $(document).on("click",'input[id="gender"]',(function() {
-        $('input[id="gender"]').removeAttr('style'); 
+    $(document).on("click",'input[id="register-gender"]',(function() {
+        $('input[id="register-gender"]').removeAttr('style'); 
     }));
 
-    $(document).on("click",'input[id="address"]',(function() {
-        $('input[id="address"]').removeAttr('style'); 
+    $(document).on("click",'input[id="register-address"]',(function() {
+        $('input[id="register-address"]').removeAttr('style'); 
     }));
 
     $(document).on("click","button.register-submit",(function() {
         $(document.querySelector('.error-message')).hide()
-        var user_name = $("#name").val()
-        var email = $("#email").val();
-        var phoneNumber = $("#phoneNumber").val()
-        var password = $("#password").val();
-        var gender = $("#gender").val()
-        var address = $("#address").val()
-        var role = $("#role").val();
+        var user_name = $("#register-name").val()
+        var email = $("#register-email").val();
+        var phoneNumber = $("#register-phoneNumber").val()
+        var password = $("#register-password").val();
+        var gender = $("#register-gender").val()
+        var address = $("#register-address").val()
+        var role = $("#register-role").val();
         // Checking for blank fields.
         if (user_name == '' || email == '' || phoneNumber == '' || password == '' || gender == '' || address  == '' || role == '') {
             if (user_name == '' ) {
-                $('input[type="text"],input[id="name"]').css("border", "2px solid red");
-                $('input[type="text"],input[id="name"]').css("box-shadow", "0 0 3px red");
+                $('input[type="text"],input[id="register-name"]').css("border", "2px solid red");
+                $('input[type="text"],input[id="register-name"]').css("box-shadow", "0 0 3px red");
             }
             if (email == '' ) {
-                $('input[type="email"],input[id="email"]').css("border", "2px solid red");
-                $('input[type="email"],input[id="email"]').css("box-shadow", "0 0 3px red");
+                $('input[type="email"],input[id="register-email"]').css("border", "2px solid red");
+                $('input[type="email"],input[id="register-email"]').css("box-shadow", "0 0 3px red");
             }
             if (phoneNumber == '' ) {
-                $('input[type="text"],input[id="phoneNumber"]').css("border", "2px solid red");
-                $('input[type="text"],input[id="phoneNumber"]').css("box-shadow", "0 0 3px red");
+                $('input[type="text"],input[id="register-phoneNumber"]').css("border", "2px solid red");
+                $('input[type="text"],input[id="register-phoneNumber"]').css("box-shadow", "0 0 3px red");
             }
             if (password == '' ) {
-                $('input[type="password"],input[id="password"]').css("border", "2px solid red");
-                $('input[type="password"],input[id="password"]').css("box-shadow", "0 0 3px red");
+                $('input[type="password"],input[id="register-password"]').css("border", "2px solid red");
+                $('input[type="password"],input[id="register-password"]').css("box-shadow", "0 0 3px red");
             }
             if (gender == '' ) {
-                $('input[type="text"],input[id="gender"]').css("border", "2px solid red");
-                $('input[type="text"],input[id="gender"]').css("box-shadow", "0 0 3px red");
+                $('input[type="text"],input[id="register-gender"]').css("border", "2px solid red");
+                $('input[type="text"],input[id="register-gender"]').css("box-shadow", "0 0 3px red");
             }
             if (address == '' ) {
-                $('input[type="text"],input[id="address"]').css("border", "2px solid red");
-                $('input[type="text"],input[id="address"]').css("box-shadow", "0 0 3px red");
+                $('input[type="text"],input[id="register-address"]').css("border", "2px solid red");
+                $('input[type="text"],input[id="register-address"]').css("box-shadow", "0 0 3px red");
             }
         } else {
             console.log(JSON.stringify({                   
