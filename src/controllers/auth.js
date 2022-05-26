@@ -62,13 +62,12 @@ exports.login = async (req, res) => {
     }
 }
 
-//protected belum diimplementasi
+//protected
 exports.protected = async (req, res) => {
     try {
 
-        return res.status(200).json({
-            info: req.user
-        })
+        
+        return res.status(200).json(res.req.user)
     } catch (error) {
         console.log(error.message)
     }

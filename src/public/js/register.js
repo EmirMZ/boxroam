@@ -1,18 +1,16 @@
 $(function() {
     const slideFadeOut = (elem) => {
-        const fade = { opacity: 0, transition: 'opacity 400ms' };
+        const fade = { opacity: 0, transition: 'opacity 400ms' ,display : 'none'};
         elem.css(fade).slideUp();
-        };
+    };
     const slideFadeIn = (elem) => {
-        const fade = { opacity: 1, transition: 'opacity 400ms' };
+        const fade = { opacity: 1, transition: 'opacity 400ms' ,display : 'block'};
         elem.css(fade).slideDown();
-        };    
+    };    
 
     const closeSuccess= () => {
         slideFadeOut($(document.querySelectorAll('.register-modal-form')))
         slideFadeIn($(document.querySelector('.checkmark-register')))
-        slideFadeOut($(document.querySelector('.authenticate-bar')))
-        slideFadeIn($(document.querySelector('.logged-in-bar'))) 
         setTimeout(function() {$(document.querySelector('.register-modal')).modal('toggle')}, 3000);
     }
     
@@ -85,6 +83,7 @@ $(function() {
                 $('input[type="text"],input[id="register-address"]').css("box-shadow", "0 0 3px red");
             }
         } else {
+            $('button[id="register-submit"]').addClass('disabled')
             console.log(JSON.stringify({                   
                 "name": user_name,
                 "email": email,
@@ -117,7 +116,7 @@ $(function() {
                         });
                         
                         closeSuccess();
-
+                        headerSwitch()
                         console.log(data);
                     } else {
                         console.log(data);
@@ -126,6 +125,7 @@ $(function() {
                 error: function(data) {
                     slideFadeIn($(document.querySelector('.error-message')))
                     $('#error_message').text(data.responseJSON.errors[0].msg)
+                    $('button[id="register-submit"]').removeClass('disabled')
 
                 }
             })
