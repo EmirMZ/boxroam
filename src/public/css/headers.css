@@ -1,4 +1,8 @@
 
+.navbar-header{
+  padding-bottom: 20px;
+  background-color: #0f1122; 
+}
 .form-control-dark {
   color: #fff;
   background-color: var(--bs-dark);

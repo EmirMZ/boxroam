@@ -10,20 +10,38 @@ function doesHttpOnlyCookieExist(cookiename) {
 
 
 function retrieveAccount() {
-    $.ajax({
-        type: "GET",
-        url: "/api/protected",
-        xhrFields: {
-            withCredentials: true
-        },
-        success: function (data) {
-            console.log(data)
-            return data;
-        },
-        error: function (data) {
-            console.log(data)
-            return data;
-        }
-    });
+    return new Promise((resolve,reject) =>{
+        $.ajax({
+            type: "GET",
+            url: "/api/protected",
+            xhrFields: {
+                withCredentials: true
+            },
+            success: function (data) {
+                resolve(data);
+            },
+            error: function (error) {
+                reject(error);
+            }
+        });
+    })
+}
+
+function logoutAccount() {
+        $.ajax({
+            type: "GET",
+            url: "/api/logout",
+            xhrFields: {
+                withCredentials: true
+            },
+            success: function () {
+                window.location = "/";
+            },
+            error: function (error) {
+                console.log(error)
+                reject(error);
+            }
+        });
+
 }
 

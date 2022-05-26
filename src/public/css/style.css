@@ -1,4 +1,5 @@
 body {
+  background-color: #e2e8f0;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
@@ -52,4 +53,39 @@ font-size: 1.5rem;
   color:red;
 }
 
+/**/
 
+
+.account-page {
+  background-color: #e2e8f0;
+  padding: 20px;
+}
+
+.breadcrumb {
+  background-color: #c5cee4;
+
+}
+
+.breadcrumb a {
+  text-decoration: none;
+}
+
+.container {
+  max-width: 2000px;
+}
+
+p {
+  margin: 0;
+}
+
+.d-flex a {
+  text-decoration: none;
+  color: #686868;
+}
+
+img {
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  object-fit: cover;
+}

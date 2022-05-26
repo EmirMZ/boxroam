@@ -50,7 +50,7 @@ exports.login = async (req, res) => {
     try {
         const token = await jwt.sign(payload, SECRET)
 
-        return res.status(200).cookie('token', token, {httpOnly: true}).json({
+        return res.status(200).cookie('token', token, {httpOnly: true,sameSite: true}).json({
             success: true,
             message: 'login_success'
         })

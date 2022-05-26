@@ -33,6 +33,16 @@ $(function(){
             $(document.querySelector('.authenticate-bar')).css("display","block");
             console.log (result)       
         }
+
+        if ($(location).attr("pathname") == '/'){
+            $(document.querySelector('#home_button')).removeClass('text-white')
+            $(document.querySelector('#home_button')).addClass('text-secondary')
+            console.log('heree')
+        }else if($(location).attr("pathname") == '/account'){
+            $(document.querySelector('#account_button')).removeClass('text-white')
+            $(document.querySelector('#account_button')).addClass('text-secondary')
+            console.log('overherer')
+        }
     });
 
 

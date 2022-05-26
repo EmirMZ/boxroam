@@ -2,11 +2,11 @@
 var express = require('express');
 var router = express.Router();
 var path = require('path');
+const {webAuth} = require('../middlewares/auth-middleware')
 
 
-
-router.get('/staff', function(req, res, next) {
-    res.sendFile(path.join(__dirname, '../public/staffindex.html'))
+router.get('/account',webAuth, function(req, res, next) {
+    res.sendFile(path.join(__dirname, '../public/account.html'))
   });
 
 module.exports = router
