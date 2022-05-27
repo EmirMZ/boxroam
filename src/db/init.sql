@@ -1,18 +1,16 @@
-BEGIN;
-
 CREATE USER "app_admin" WITH PASSWORD 'password';
 
 CREATE USER "app_user" WITH PASSWORD 'password';
 
-CREATE DATABASE test_database WITH OWNER app_admin;
+CREATE DATABASE boxroam_database WITH OWNER app_admin;
 
-\c test_database postgres
+\c boxroam_database postgres
 
 DROP SCHEMA public;
 
 CREATE SCHEMA app AUTHORIZATION app_admin;
 
-\c test_database app_admin
+\c boxroam_database app_admin
 
 GRANT USAGE ON SCHEMA app TO app_user;
 
@@ -55,10 +53,16 @@ CREATE TABLE Bus
 (
   Seats INT NOT NULL,
   Depart_Date INT NOT NULL,
-  Route INT[] NOT NULL,
-  Time_Table INT NOT NULL,
+  Station_Arr_ID INT[] NOT NULL,
+  Time_Table INT[] NOT NULL,
   Position INT NOT NULL,
   ID SERIAL PRIMARY KEY
+);
+
+CREATE TABLE Station
+(
+  ID SERIAL PRIMARY KEY,
+  Name VARCHAR(20) NOT NULL UNIQUE
 );
 
 
@@ -92,4 +96,3 @@ CREATE TABLE Booking
   Transaction_ID INT NOT NULL,
   Bus_ID INT NOT NULL
 );
-COMMIT;

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html >
 
 <head>
   <title>Express</title>
@@ -6,7 +6,8 @@
   <link rel="stylesheet" href="/css/bootstrap.css">
   <link rel="stylesheet" href="/css/style.css">
   <link rel="stylesheet" href="/css/headers.css">
-
+  <link rel="stylesheet" href="/css/index.css">
+  <link rel="stylesheet" href="/css/animate.css">
 
   <script src="/js/js.cookie.js"></script>
   <script src="/js/jquery.js"></script>
@@ -15,15 +16,89 @@
   <script src="/js/getCreds.js"></script>
   <script src="/js/login.js"></script>
   <script src="/js/register.js"></script>
+  <script src="/js/index.js"></script>
 
   
 </head>
 
 <body>
-  <header id="header"></header>
-  <h1>Express</h1>
-  <p>Welcome to Express</p>
+  <header id="header" ></header>
   <div id="includedContent"></div>
+  <div class="masthead full-height" >
+    <div class="container">
+      <div id="order_step_0" class="container animate__animated marginnn ">
+        <div class="masthead-subheading">Going Somewhere?</div>
+        <div class="masthead-heading text-uppercase">Travel with our boxroam</div>
+        <a id="next_button" class="btn btn-primary btn-xl text-uppercase" >Book a Trip</a>
+      </div>
+      <div id="order_step_1" class="container animate__animated " style="display: none;">
+        <div class="order-booking row">
+          <a id="back_button" class="btn btn-outline-primary btn-md text-uppercase  col-md-2 back-button-padding">&#60; Back</a>
+          
+          <form id="order_step_2" class="py-3 container  marginnn">
+            <div class="row">
+              <div class="mb-3 col-md">
+                <div class="col-5">
+                  <h4 class="mb-1 text-dark text-start">Where?</h4>
+                </div>
+                <select class="form-select" aria-label="Default select example">
+                  <option selected>Open this select menu</option>
+                  <option value="1">One</option>
+                  <option value="2">Two</option>
+                  <option value="3">Three</option>
+                </select>
+              </div>
+
+              <div class="mb-3 col-md">
+                <div class="col-5">
+                  <h4 class="mb-1 text-dark text-start">To?</h4>
+                </div>
+                <select class="form-select" aria-label="Default select example">
+                  <option selected>Open this select menu</option>
+                  <option value="1">One</option>
+                  <option value="2">Two</option>
+                  <option value="3">Three</option>
+                </select>
+              </div>
+            </div>
+          </form>
+
+          <form id="order_step_3" class="py-3 container  marginnn" style="display: none;">
+            <div class="row">
+              <div class="mb-3 col-md">
+                <div class="col-5">
+                  <h4 class="mb-1 text-dark text-start">Where? 3</h4>
+                </div>
+                <select class="form-select" aria-label="Default select example">
+                  <option selected>Open this select menu</option>
+                  <option value="1">One</option>
+                  <option value="2">Two</option>
+                  <option value="3">Three</option>
+                </select>
+              </div>
+
+              <div class="mb-3 col-md">
+                <div class="col-5">
+                  <h4 class="mb-1 text-dark text-start">To?</h4>
+                </div>
+                <select class="form-select" aria-label="Default select example">
+                  <option selected>Open this select menu</option>
+                  <option value="1">One</option>
+                  <option value="2">Two</option>
+                  <option value="3">Three</option>
+                </select>
+              </div>
+            </div>
+          </form>
+          <div class="row gx-0 justify-content-end">
+            <a id="next_button" class="btn btn-primary btn-md text-uppercase back-button-padding col-md-2">Next &#62;</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
 </body>
 
 </html>

@@ -6,7 +6,8 @@ const {webAuth} = require('../middlewares/auth-middleware')
 
 
 router.get('/account',webAuth, function(req, res, next) {
-    res.sendFile(path.join(__dirname, '../public/account.html'))
-  });
+  res.sendFile(path.join(__dirname, '../public/account.html'))
+});
+
 
 module.exports = router

@@ -31,15 +31,18 @@ app.use('/css', express.static(path.join(__dirname, '../node_modules/bootstrap/d
 app.use('/js', express.static(path.join(__dirname, '../node_modules/bootstrap/dist/js')))
 app.use('/js', express.static(path.join(__dirname, '../node_modules/jquery/dist')))
 app.use('/js', express.static(path.join(__dirname, '../node_modules/js-cookie/dist')))
+app.use('/css', express.static(path.join(__dirname, '../node_modules/animate.css')))
 
 // import routes
 var authRoutes = require('./routes/auth')
 var frontEnd = require('./routes/frontend')
 var busRoutes = require('./routes/busRoutes')
+var station = require('./routes/station')
 
 app.use('/', frontEnd)
 app.use('/api', authRoutes)
 app.use('/coba', busRoutes)
+app.use('/api', station)
 
 
 const appStart = () => {

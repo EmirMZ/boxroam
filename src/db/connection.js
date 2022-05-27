@@ -12,7 +12,7 @@ const config = {
   password: process.env.DATABASE_PASS,
   database: process.env.DATABASE_DB,
   port: process.env.DATABASE_PORT,
-  ssl: true
+  ssl: false
 };
 
 const db = new pg.Pool(config);
