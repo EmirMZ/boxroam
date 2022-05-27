@@ -30,3 +30,4 @@ exports.listAccount = (role) =>{
     console.log(db.query(dbquery))
     return db.query(dbquery)
 }
+

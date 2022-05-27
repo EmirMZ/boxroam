@@ -35,9 +35,11 @@ app.use('/js', express.static(path.join(__dirname, '../node_modules/js-cookie/di
 // import routes
 var authRoutes = require('./routes/auth')
 var frontEnd = require('./routes/frontend')
+var busRoutes = require('./routes/busRoutes')
 
 app.use('/', frontEnd)
 app.use('/api', authRoutes)
+app.use('/coba', busRoutes)
 
 
 const appStart = () => {

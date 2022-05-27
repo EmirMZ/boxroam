@@ -17,3 +17,4 @@ router.post('/registerAdmin', registerValidation, validationMiddleware, register
 router.post('/login', loginValidation, validationMiddleware, login)
 router.post('/loginAdmin', loginValidation, validationMiddleware, login)
 router.get('/logout', logout)
+
