@@ -86,7 +86,7 @@ exports.getBusByRoute = async (req, res) => {
 
 exports.updateBusById = async (req, res) => {
     try {
-        await db.updateBusById(req.params['id'])
+        await db.updateBusById(req)
         return res.redirect('/bus/getBus')
     
     } catch (error) {
