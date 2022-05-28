@@ -14,6 +14,8 @@ $.fn.addClass = function () {
 
 
 $(function() {
+    var $from_option = $('#from_option');
+    var $to_option = $('#to_option');
     $(document).on("click",'#next_button',(function(){
 
         $(document.querySelectorAll('#next_button')).addClass('disabled')
@@ -117,10 +119,45 @@ $(function() {
                 })
             },200);
         }
-
-        
-
+    }))
 
 
+    retrieveStation().then(res =>{
+        $.each(res, function(Null , res) {
+            console.log(res.id + ' ' + res.name)
+            var $from_row_option = $("<option/>", {
+              id : "from_" + res.id,
+              value: res.id,
+              text: res.name,
+              class: 'from_row_option'
+            });
+            $from_option.append($from_row_option);
+
+            var $to_row_option = $("<option/>", {
+                id : "to_" + res.id,
+                value: res.id,
+                text: res.name,
+                class: 'to_row_option'
+              });
+              $to_option.append($to_row_option);
+          });
+    })
+
+    $(document).on("click",'.from_row_option',(function(){
+
+        $('.to_row_option').removeClass('disp-hide').delay(10).queue(function(){
+            $('#to_' + $from_option.val()).addClass('disp-hide')
+            $(this).dequeue();
+         });
+
+
+    }))
+
+    $(document).on("click",'.to_row_option',(function(res){
+
+        $('.from_row_option').removeClass('disp-hide').delay(10).queue(function(){
+            $('#from_' + $to_option.val()).addClass('disp-hide')
+            $(this).dequeue();
+         });
     }))
 })

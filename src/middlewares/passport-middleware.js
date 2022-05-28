@@ -32,10 +32,52 @@ passport.use(
         gender : rows[0].gender,
         id : rows[0].id,
         name : rows[0].name,
-        phone : rows[0].phone}
+        phone : rows[0].phone,
+        role: res.role
+      }
 
 
       return await done(null, user)
+    } catch (error) {
+      console.log(error.message)
+      done(null, false)
+    }
+  })
+)
+
+passport.use('operatorRole',
+  new Strategy(opts, async (res, done) => {
+    try {
+      if(res.role != 'operator'){
+        throw new Error('401 not authorized')
+      }
+      const { rows } = await db.getAccountFromID('operator' , res.id)
+
+      if (!rows.length) {
+        throw new Error('401 not authorized')
+      }
+
+      return await done(null, res)
+    } catch (error) {
+      console.log(error.message)
+      done(null, false)
+    }
+  })
+)
+
+passport.use('driverRole',
+  new Strategy(opts, async (res, done) => {
+    try {
+      if(res.role != 'operator'){
+        throw new Error('401 not authorized')
+      }
+      const { rows } = await db.getAccountFromID('operator' , res.id)
+
+      if (!rows.length) {
+        throw new Error('401 not authorized')
+      }
+
+      return await done(null, res)
     } catch (error) {
       console.log(error.message)
       done(null, false)

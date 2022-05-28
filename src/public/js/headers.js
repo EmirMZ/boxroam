@@ -7,24 +7,41 @@ const slideFadeIn = (elem) => {
     elem.css(fade).slideDown();
 }; 
 
+function dashboardButtonSwitch(){
+    retrieveAccount().then(result => {
+        if(result.role == 'driver' || result.role == 'operator'){
+            $(document.querySelector('#dashboard_button')).removeClass('disp-hide');
+        }
+    }).catch(err => {
+        // got error
+    }); 
+}
+
 function headerSwitch(){
     var result = doesHttpOnlyCookieExist('token')
+    dashboardButtonSwitch()
     if (result == true){
         slideFadeOut($(document.querySelector('.authenticate-bar')));
         slideFadeIn($(document.querySelector('.logged-in-bar')));
+        $(document.querySelectorAll("#staff_login_button")).addClass('disp-hide')
+        dashboardButtonSwitch() 
         console.log (result)
     }else{
         slideFadeOut($(document.querySelector('.logged-in-bar')));
         slideFadeIn($(document.querySelector('.authenticate-bar')));
+        $(document.querySelectorAll("#staff_login_button")).removeClass('disp-hide')
         console.log (result)       
     }
 }
 $(function(){
 
-        
+
+    
     $("#header").load("./modals/headers.html",function(){
+        dashboardButtonSwitch() 
         var result = doesHttpOnlyCookieExist('token')
         if (result == true){
+            $(document.querySelectorAll("#staff_login_button")).addClass('disp-hide')
             $(document.querySelector('.authenticate-bar')).css("display","none");
             $(document.querySelector('.logged-in-bar')).css("display","block");
             console.log (result)

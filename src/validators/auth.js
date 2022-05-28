@@ -17,15 +17,24 @@ const password = check('password').isLength({min:6, max:15})
 // email
 const email = check('email').isEmail().withMessage('Please provide a valid email')
 
-//role
-const role = check('role').custom((value) => {
-    const roleList = ['operator', 'passenger', 'driver'];
+const passengerRole = check('role').custom((value) => {
+        const roleList = ['passenger'];
+        if (!roleList.includes(value)) {
+          throw new Error('Unknown role');
+        }
+      
+        return true;
+})
+
+const operatorRole = check('role').custom((value) => {
+    const roleList = ['operator'];
     if (!roleList.includes(value)) {
       throw new Error('Unknown role');
     }
   
     return true;
-  })
+})
+
 
 //gender
 const gender = check('gender').isNumeric().withMessage('Please provide a valid gender (male, female, other) = (1, 2, 3)')
@@ -57,8 +66,9 @@ const loginFieldsCheck = check('email').custom(async(value, {req}) => {
     req.user = user.rows[0]
 })
 
+
 module.exports = {
-    roleCheck: [role],
-    registerValidation: [gender, role, email, password, emailExist, phoneNumber],
+    passengerRegisterValidation: [gender, passengerRole, email, password, emailExist, phoneNumber],
+    operatorRegisterValidation: [gender, operatorRole, email, password, emailExist, phoneNumber],
     loginValidation: [loginFieldsCheck],
 }
