@@ -13,8 +13,8 @@ exports.getBusById = (id, req) => {
 }
 
 exports.updateBusById = (id, req) => {
-    const {seats, depart_date, route, time_table, position} = req.body
-    const psql = format('update app.Bus set seats = %L, depart_date = %L, route = \'{%s}\', time_table = %L, position = %L where id = %L', seats, depart_date, route, time_table, position, id)
+    const {seats, depart_date, station_arr_id, time_table, position} = req.body
+    const psql = format('update app.Bus set seats = %L, depart_time = now(), station_arr_id = \'{%s}\', time_table = \'{%s}\', position = %L where id = %L', seats, station_arr_id, time_table, position, id)
     console.log(psql)
     return db.query(psql)
 
@@ -46,9 +46,9 @@ exports.deleteBusById = (req) => {
 // masih knop gara-gara array
 exports.addBus = (req) => {
 
-    const {seats, depart_date, Station_Arr_ID, time_table, position} = req.body
+    const {seats, depart_date, station_arr_id, time_table, position} = req.body
 
-    const dbquery = format('insert into app.Bus (seats, depart_date, Station_Arr_ID, time_table, position) values (%L, default, \'{%s}\', \'{%s}\', %L)', seats, Station_Arr_ID, time_table, position)
+    const dbquery = format('insert into app.Bus (seats, depart_time, Station_Arr_ID, time_table, position) values (%L, now(), \'{%s}\', \'{%s}\', %L)', seats, station_arr_id, time_table, position)
     console.log(dbquery)
     const psql = db.query (dbquery)
     return psql

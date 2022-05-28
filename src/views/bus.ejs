@@ -103,7 +103,7 @@
               <tr>
                 <th><%= i+1 %></th>
                 <td><%= bus.list[i].seats %></td>
-                <td><%= bus.list[i].depart_date %></td>
+                <td><%= bus.list[i].depart_time %></td>
                 <td><%= bus.list[i].station_arr_id %></td>
                 <td><%= bus.list[i].time_table %></td>
                 <td><%= bus.list[i].position %></td>
@@ -152,89 +152,28 @@
               />
             </div>
             <div class="mb-3">
-              <label for="station_arr_id[]" class="form-label fw-bold">Staion Arr Id</label>
+              <label for="station_arr_id" class="form-label fw-bold">Staion Arr Id</label>
               <input
-                type="number"
+                type="text"
                 class="form-control"
                 id="station_arr_id"
                 placeholder="Masukkan depart date"
                 required
-                name="station_arr_id[]"
+                name="station_arr_id"
               />
             </div>
+  
             <div class="mb-3">
-              <label for="station_arr_id[]" class="form-label fw-bold">Staion Arr Id</label>
+              <label for="time_table" class="form-label fw-bold">Time table</label>
               <input
-                type="number"
-                class="form-control"
-                id="station_arr_id"
-                placeholder="Masukkan depart date"
-                required
-                name="station_arr_id[]"
-              />
-            </div>
-            <div class="mb-3">
-              <label for="station_arr_id[]" class="form-label fw-bold">Staion Arr Id</label>
-              <input
-                type="number"
-                class="form-control"
-                id="station_arr_id"
-                placeholder="Masukkan depart date"
-                required
-                name="station_arr_id[]"
-              />
-            </div>
-            <div class="mb-3">
-              <label for="station_arr_id[]" class="form-label fw-bold">Staion Arr Id</label>
-              <input
-                type="number"
-                class="form-control"
-                id="station_arr_id"
-                placeholder="Masukkan depart date"
-                required
-                name="station_arr_id[]"
-              />
-            </div>
-            <div class="mb-3">
-              <label for="time_table[]" class="form-label fw-bold">Time table</label>
-              <input
-                type="number"
+                type="text"
                 class="form-control"
                 id="time_table"
                 placeholder="Masukkan time table"
                 required
-                name="time_table[]"
+                name="time_table"
               />
-              <div class="mb-3">
-                <label for="time_table[]" class="form-label fw-bold">Time table</label>
-                <input
-                  type="number"
-                  class="form-control"
-                  id="time_table"
-                  placeholder="Masukkan time table"
-                  required
-                  name="time_table[]"
-                />
-            <div class="mb-3">
-              <label for="time_table[]" class="form-label fw-bold">Time table</label>
-              <input
-                type="number"
-                class="form-control"
-                id="time_table"
-                placeholder="Masukkan time table"
-                required
-                name="time_table[]"
-              />
-            <div class="mb-3">
-              <label for="time_table[]" class="form-label fw-bold">Time table</label>
-              <input
-                type="number"
-                class="form-control"
-                id="time_table"
-                placeholder="Masukkan time table"
-                required
-                name="time_table[]"
-              />
+        
             <div class="mb-3">
               <label for="position" class="form-label fw-bold">Position</label>
               <input

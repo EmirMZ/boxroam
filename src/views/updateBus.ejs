@@ -90,46 +90,53 @@
             />
 
             <div class="mb-3">
-              <label for="name" class="form-label fw-bold">Name</label>
-              <input
-                type="text"
-                class="form-control"
-                id="name"
-                placeholder="Masukkan Nama"
-                required
-                name="name"
-                value="<%= bus.list[0].name %>"
-              />
-            </div>
-
-            <div class="mb-3">
-              <label for="role" class="form-label fw-bold">Role</label>
-              <input
-                type="text"
-                class="form-control"
-                id="role"
-                placeholder="Masukkan Role"
-                required
-                name="role"
-                value="<%= bus.list[0].role %>"
-              />
-            </div>
-
-            <div class="mb-3">
-              <label for="winrate" class="form-label fw-bold">Winrate</label>
+              <label for="seats" class="form-label fw-bold">Seats</label>
               <input
                 type="number"
                 class="form-control"
-                id="winrate"
-                placeholder="Masukkan Winrate"
+                id="seats"
+                placeholder="Jumlah seats"
                 required
-                name="winrate"
-                value="<%= bus.list[0].winrate %>"
+                name="seats"
+              />
+            </div>
+            <div class="mb-3">
+              <label for="station_arr_id" class="form-label fw-bold">Staion Arr Id</label>
+              <input
+                type="text"
+                class="form-control"
+                id="station_arr_id"
+                placeholder="Masukkan depart date"
+                required
+                name="station_arr_id"
+              />
+            </div>
+  
+            <div class="mb-3">
+              <label for="time_table" class="form-label fw-bold">Time table</label>
+              <input
+                type="text"
+                class="form-control"
+                id="time_table"
+                placeholder="Masukkan time table"
+                required
+                name="time_table"
+              />
+        
+            <div class="mb-3">
+              <label for="position" class="form-label fw-bold">Position</label>
+              <input
+                type="number"
+                class="form-control"
+                id="position"
+                placeholder="Masukkan position"
+                required
+                name="position""
               />
             </div>
             <button
               type="submit"
-              onclick="return confirm('Apakah anda ingin mengubah Data <%= bus.list[0].name %> ?')"
+              onclick="return confirm('Apakah anda ingin mengubah Data <%= bus.list[0].id %> ?')"
               class="btn btn-primary"
             >
               UBAH DATA
