@@ -16,3 +16,5 @@ function retrieveStation() {
         });
     })
 }
+
+var stationList = retrieveStation()
