@@ -2,6 +2,7 @@
 //pusat kendali penyajian api dan frontend.
 //jika ada request, maka akan di route ke /routes
 const express = require('express');
+const bodyParser = require("body-parser");
 var app = express()
 var path = require('path');  
 var logger = require('morgan');
@@ -9,6 +10,11 @@ const {PORT, CLIENT_URL} = require("./constants")
 const cookieParser = require('cookie-parser')
 const passport = require('passport')
 const cors = require('cors')
+
+app.use(express.static("public"));
+app.use(bodyParser.urlencoded({ extended: false }));
+app.set("view engine", "ejs");
+app.set("views", "view");
 
 // import passport middleware
 require('./middlewares/passport-middleware')
@@ -31,18 +37,17 @@ app.use('/css', express.static(path.join(__dirname, '../node_modules/bootstrap/d
 app.use('/js', express.static(path.join(__dirname, '../node_modules/bootstrap/dist/js')))
 app.use('/js', express.static(path.join(__dirname, '../node_modules/jquery/dist')))
 app.use('/js', express.static(path.join(__dirname, '../node_modules/js-cookie/dist')))
-app.use('/css', express.static(path.join(__dirname, '../node_modules/animate.css')))
 
 // import routes
 var authRoutes = require('./routes/auth')
 var frontEnd = require('./routes/frontend')
 var busRoutes = require('./routes/busRoutes')
-var station = require('./routes/station')
+var transactionRoutes = require('./routes/transactionRoutes')
 
 app.use('/', frontEnd)
 app.use('/api', authRoutes)
-app.use('/coba', busRoutes)
-app.use('/api', station)
+app.use('/bus', busRoutes)
+app.use('/transaction', transactionRoutes)
 
 
 const appStart = () => {
