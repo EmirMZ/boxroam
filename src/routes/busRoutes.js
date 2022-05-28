@@ -13,6 +13,8 @@ router.get('/updateBusById/:id', updateBusByIdWeb)
 
 router.get('/getBusByRoute', getBusByRoute)
 
+router.get('/getBusByRoute', getBusByRoute)
+
 router.post('/addBus', registerBus)
 
 router.post('/updateBusById/:id', updateBusById)
