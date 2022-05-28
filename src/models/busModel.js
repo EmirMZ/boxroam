@@ -11,7 +11,7 @@ exports.getBus = (res) => {
         const bus = {
             title: "Bus Page",
             subtitle: "Daftar Bus",
-            list: JSON.parse(JSON.stringify(result)), // Data dari Database
+            list: JSON.parse(JSON.stringify(result.rows)), // Data dari Database
         }
         res.render("bus.ejs", {bus})
         res.end()
@@ -41,9 +41,9 @@ exports.deleteBusById = (req) => {
 // masih knop gara-gara array
 exports.addBus = (req) => {
 
-    const {seats, depart_date, route, time_table, position} = req.body
+    const {seats, depart_date, Station_Arr_ID, time_table, position} = req.body
 
-    const dbquery = format('insert into app.Bus (seats, depart_date, route, time_table, position) values (%L, %L, \'{%s}\', %L, %L)', seats, depart_date, route, time_table, position)
+    const dbquery = format('insert into app.Bus (seats, depart_date, Station_Arr_ID, time_table, position) values (%L, %L, \'{%s}\', \'{%s}\', %L)', seats, depart_date, Station_Arr_ID, time_table, position)
     console.log(dbquery)
     const psql = db.query (dbquery)
     return psql
