@@ -1,6 +1,7 @@
 
 //pusat kendali penyajian api dan frontend.
 //jika ada request, maka akan di route ke /routes
+
 const express = require('express');
 const bodyParser = require("body-parser");
 var app = express()
@@ -14,7 +15,6 @@ const cors = require('cors')
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.set("view engine", "ejs");
-app.set("views", "view");
 
 // import passport middleware
 require('./middlewares/passport-middleware')
@@ -24,7 +24,7 @@ app.use(express.json())
 app.use(cookieParser())
 app.use(cors({origin: CLIENT_URL, credentials: true}))
 app.use(passport.initialize())
-
+app.set('views', path.join(__dirname, './views'))
 
 app.use(function(req, res, next) {
     //res.setHeader("Content-Security-Policy", "default-src 'self'; font-src 'self'; img-src 'self'; script-src 'self'; style-src 'self'; frame-src 'self'");
@@ -37,18 +37,23 @@ app.use('/css', express.static(path.join(__dirname, '../node_modules/bootstrap/d
 app.use('/js', express.static(path.join(__dirname, '../node_modules/bootstrap/dist/js')))
 app.use('/js', express.static(path.join(__dirname, '../node_modules/jquery/dist')))
 app.use('/js', express.static(path.join(__dirname, '../node_modules/js-cookie/dist')))
+app.use('/css', express.static(path.join(__dirname, '../node_modules/animate.css')))
+
+
 
 // import routes
 var authRoutes = require('./routes/auth')
 var frontEnd = require('./routes/frontend')
 var busRoutes = require('./routes/busRoutes')
 var transactionRoutes = require('./routes/transactionRoutes')
+var station = require('./routes/station')
+
 
 app.use('/', frontEnd)
 app.use('/api', authRoutes)
 app.use('/bus', busRoutes)
 app.use('/transaction', transactionRoutes)
-
+app.use('/api', station)
 
 const appStart = () => {
     try {
