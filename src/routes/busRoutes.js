@@ -6,7 +6,9 @@ const Bus = require("../models/busModel")
 const {registerBus, getBus, getBusById, updateBusById, deleteBusById} = require('../controllers/bus')
 
 
-router.get('/getBus', getBus)
+router.get('/getBus', (req, res) =>{
+    Bus.getBus(res)
+} )
 
 router.get('/getBusById', getBusById)
 

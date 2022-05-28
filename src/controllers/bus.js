@@ -18,7 +18,7 @@ exports.getBus = async (req, res) => {
             error: error.message
         })
     }
-    res.render("bus", {bus})
+    res.render("bus.ejs", { bus })
     res.end()
 }
 

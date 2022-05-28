@@ -2,9 +2,20 @@ const db = require('../db/connection')
 const format = require('pg-format')
 const {response} = require('express')
 
-exports.getBus = () => {
+exports.getBus = (res) => {
     const psql = "select * from app.Bus"
-    return db.query(psql)
+
+    db.query(psql, (error, result) => {
+        if(error) return console.log("error", error);
+
+        const bus = {
+            title: "Bus Page",
+            subtitle: "Daftar Bus",
+            list: JSON.parse(JSON.stringify(result)), // Data dari Database
+        }
+        res.render("bus.ejs", {bus})
+        res.end()
+    })
 }
 
 exports.getBusById = (req) => {
