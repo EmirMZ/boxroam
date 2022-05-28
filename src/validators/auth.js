@@ -35,6 +35,14 @@ const operatorRole = check('role').custom((value) => {
     return true;
 })
 
+const driverRole = check('role').custom((value) => {
+    const roleList = ['driver'];
+    if (!roleList.includes(value)) {
+      throw new Error('Unknown role');
+    }
+  
+    return true;
+})
 
 //gender
 const gender = check('gender').isNumeric().withMessage('Please provide a valid gender (male, female, other) = (1, 2, 3)')
@@ -69,6 +77,8 @@ const loginFieldsCheck = check('email').custom(async(value, {req}) => {
 
 module.exports = {
     passengerRegisterValidation: [gender, passengerRole, email, password, emailExist, phoneNumber],
-    operatorRegisterValidation: [gender, operatorRole, email, password, emailExist, phoneNumber],
+    operatorRegisterValidation: [operatorRole, email, password, emailExist, phoneNumber],
+    driverRegisterValidation: [driverRole, email, password, emailExist, phoneNumber],
     loginValidation: [loginFieldsCheck],
+
 }

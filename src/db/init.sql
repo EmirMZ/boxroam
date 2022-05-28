@@ -74,7 +74,7 @@ CREATE TABLE Driver
   Email varchar(255) UNIQUE NOT NULL,
   Password varchar(255) NOT NULL,
   ID SERIAL PRIMARY KEY,
-  Bus_ID INT NOT NULL
+  Bus_ID INT 
 );
 
 CREATE TABLE Operator

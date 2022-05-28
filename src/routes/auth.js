@@ -4,7 +4,7 @@
 const {Router} = require('express')
 const { register, login, protected, logout} = require('../controllers/auth')
 const { validationMiddleware} = require('../middlewares/validations-middleware')
-const {passengerRegisterValidation, operatorRegisterValidation, loginValidation} = require('../validators/auth')
+const {passengerRegisterValidation, operatorRegisterValidation, loginValidation, driverRegisterValidation} = require('../validators/auth')
 const {userAuth,operatorAuth} = require('../middlewares/auth-middleware')
 const router = Router()
 
@@ -14,6 +14,7 @@ module.exports = router
 router.get('/protected', userAuth,protected)
 router.post('/register', passengerRegisterValidation, validationMiddleware, register)
 router.post('/registerOperator',  operatorAuth, operatorRegisterValidation, validationMiddleware, register)
+router.post('/registerDriver',  operatorAuth, driverRegisterValidation, validationMiddleware, register)
 router.post('/login', loginValidation, validationMiddleware, login)
 router.get('/logout', logout)
 

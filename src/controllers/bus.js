@@ -16,8 +16,6 @@ exports.getBus = async (req, res) => {
             error: error.message
         })
     }
-
-
 }
 
 
