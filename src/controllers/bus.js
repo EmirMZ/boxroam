@@ -35,6 +35,37 @@ exports.getBusById = async (req, res) => {
     }
 }
 
+exports.getBusByRoute = async (req, res) => {
+    try {
+        const {rows} = await db.getBusByRoute(req)
+
+        let len = rows.length
+        let i = 0
+        while(i < len){
+            if (!rows.length){
+                break;
+            }
+            if (rows[i].station_arr_id.indexOf(req.body.route_from) > rows[i].station_arr_id.indexOf(req.body.route_to)) {
+                rows.shift()
+                i--
+            }
+                i++
+            }
+        if(!rows.length){
+            return res.status(200).json({
+                    error: 'no_route_available'
+                }) 
+        }
+        
+
+        return res.status(200).json(rows)
+    } catch (error) {
+        res.status(500).json({
+            error: error.message
+        })
+    }
+}
+
 exports.updateBusById = async (req, res) => {
     try {
         await db.updateBusById(req)
