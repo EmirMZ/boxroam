@@ -81,11 +81,12 @@
           <table class="table mt-3">
             <thead>
               <tr>
-                <th scope="col">No</th>
-                <th scope="col">Name</th>
-                <th scope="col">Role</th>
-                <th scope="col">Winrate</th>
-                <th scope="col">Action</th>
+                <th scope="col">Id</th>
+                <th scope="col">Seats</th>
+                <th scope="col">Depart date</th>
+                <th scope="col">Route</th>
+                <th scope="col">Time table</th>
+                <th scope="col">Position</th>
               </tr>
             </thead>
             <% if (bus.list.length === 0) { %>
@@ -100,9 +101,12 @@
             <tbody>
               <tr>
                 <th><%= i+1 %></th>
-                <td><%= bus.list[i].name %></td>
-                <td><%= bus.list[i].role %></td>
-                <td><%= bus.list[i].winrate %>%</td>
+                <td><%= bus.list[i].id %></td>
+                <td><%= bus.list[i].seats %></td>
+                <td><%= bus.list[i].depart_date %>%</td>
+                <td><%= bus.list[i].route %>%</td>
+                <td><%= bus.list[i].time_table %>%</td>
+                <td><%= bus.list[i].position %>%</td>
                 <form action="/bus/removeBus" method="post">
                   <td>
                     <a
