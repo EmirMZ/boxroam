@@ -35,6 +35,24 @@ exports.getBusById = async (req, res) => {
     }
 }
 
+exports.updateBusByIdWeb = async (req, res) => {
+    try {
+        const {rows} = await db.getBusById(req.params['id'])
+        const bus = {
+            title: "Bus Page",
+            subtitle: "Daftar Bus",
+            list: JSON.parse(JSON.stringify(rows))    
+     }
+     return res.render("updateBus", {bus})
+    } catch (error) {
+        res.status(500).json({
+            error: error.message
+        })
+    }
+}
+
+
+
 exports.getBusByRoute = async (req, res) => {
     try {
         const {rows} = await db.getBusByRoute(req)
