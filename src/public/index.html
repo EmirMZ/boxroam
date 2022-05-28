@@ -1,7 +1,7 @@
 <!DOCTYPE html >
 
 <head>
-  <title>Express</title>
+  <title>Boxroam</title>
   
   <link rel="stylesheet" href="/css/bootstrap.css">
   <link rel="stylesheet" href="/css/style.css">
@@ -14,6 +14,7 @@
   <script src="/js/bootstrap.bundle.js"></script>
   <script src="/js/headers.js"></script>
   <script src="/js/getCreds.js"></script>
+  <script src="/js/getStation.js"></script>
   <script src="/js/login.js"></script>
   <script src="/js/register.js"></script>
   <script src="/js/index.js"></script>
@@ -24,8 +25,8 @@
 <body>
   <header id="header" ></header>
   <div id="includedContent"></div>
-  <div class="masthead full-height" >
-    <div class="container">
+  <div class="container-flex masthead full-height" >
+    <div class="row container vertical-center">
       <div id="order_step_0" class="container animate__animated marginnn ">
         <div class="masthead-subheading">Going Somewhere?</div>
         <div class="masthead-heading text-uppercase">Travel with our boxroam</div>
@@ -41,11 +42,8 @@
                 <div class="col-5">
                   <h4 class="mb-1 text-dark text-start">Where?</h4>
                 </div>
-                <select class="form-select" aria-label="Default select example">
-                  <option selected>Open this select menu</option>
-                  <option value="1">One</option>
-                  <option value="2">Two</option>
-                  <option value="3">Three</option>
+                <select id="from_option" class="form-select" aria-label="Default select example">
+                  <option selected>---</option>
                 </select>
               </div>
 
@@ -53,11 +51,8 @@
                 <div class="col-5">
                   <h4 class="mb-1 text-dark text-start">To?</h4>
                 </div>
-                <select class="form-select" aria-label="Default select example">
-                  <option selected>Open this select menu</option>
-                  <option value="1">One</option>
-                  <option value="2">Two</option>
-                  <option value="3">Three</option>
+                <select id="to_option" class="form-select" aria-label="Default select example">
+                  <option selected>---</option>
                 </select>
               </div>
             </div>
@@ -96,7 +91,13 @@
         </div>
       </div>
     </div>
+    <div class="row">
+      <div class="col text-end px-4" style="--bs-gutter-y : -1rem;">
+        <p2 id='staff_login_button' class="btn btn-light" data-bs-toggle="modal" data-bs-target="#loginModalStaff" >Staff Login</p2>
+      </div>
+    </div>
   </div>
+
 
 
 </body>

@@ -13,12 +13,8 @@ $(function() {
     
     if(window.location.pathname == '/'){
         $("#includedContent").append($('<div>').load("./modals/login.html #loginModal"));
+        $("#includedContent").append($('<div>').load("./modals/loginstaff.html #loginModalStaff"));
     }
-    if(window.location.pathname == '/staff'){
-        $("#includedContent").append($('<div>').load("./modals/loginstaff.html #loginModal"));
-    }
-
-    
 
     $(document).on("click",'input[type="email"]',(function() {
         $('input[type="email"]').removeAttr('style');
@@ -28,7 +24,7 @@ $(function() {
         $('input[type="password"]').removeAttr('style'); 
     }));
 
-    $(document).on("click","button.login-submit",(function() {
+    $(document).on("click","#login-submit",(function() {
         var email = $("#email").val();
         var password = $("#password").val();
         var role = $("#role").val();
@@ -64,7 +60,7 @@ $(function() {
 
                         slideFadeOut($(document.querySelectorAll('.login-modal-form')))
                         slideFadeIn($(document.querySelector('.checkmark-login')))
-                        setTimeout(function() {$(document.querySelector('.login-modal')).modal('toggle')}, 3000);
+                        setTimeout(function() {$(document.querySelector('#loginModalStaff')).modal('toggle')}, 3000);
                         headerSwitch()
                         console.log(data);
                     } else {
@@ -80,6 +76,71 @@ $(function() {
                         });
                     } else if (data.responseJSON.errors[0].msg == 'login_fail_pass') {
                         $('input[type="password"]').css({
+                            "border": "2px solid red",
+                            "box-shadow": "0 0 3px red"
+                        }); 
+                    } 
+                }
+            })
+        }
+    }));
+
+    $(document).on("click","#staff_login_submit",(function() {
+        var email = $("#staff_email").val();
+        var password = $("#staff_password").val();
+        var role = $("#staff_role").val();
+        // Checking for blank fields.
+        if (email == '' || password == '' || role == '') {
+            if (email == '' ) {
+                $("#staff_email").css("border", "2px solid red");
+                $("#staff_email").css("box-shadow", "0 0 3px red");
+            }
+            if (password == '' ) {
+                $("#staff_password").css("border", "2px solid red");
+                $("#staff_password").css("box-shadow", "0 0 3px red");
+            }
+            if (role == '' ) {
+                $("#staff_role").css("border", "2px solid red");
+                $("#staff_role").css("box-shadow", "0 0 3px red");
+            }
+        } else {
+            $("#staff_login_submit").addClass('disabled')
+            $.ajax({
+                type: "POST",
+                url: "/api/login",
+                data: JSON.stringify({                   
+                    "email": email,
+                    "password": password,
+                    "role": role
+                }),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function(data) {
+                    if (data.message == 'login_success') {
+                        $("form")[0].reset();
+                        $("#staff_password").css({
+                            "border": "2px solid #00F5FF",
+                            "box-shadow": "0 0 5px #00F5FF"
+                        });
+
+                        slideFadeOut($(document.querySelectorAll('.login-modal-form')))
+                        slideFadeIn($(document.querySelector('.checkmark-login-staff')))
+                        setTimeout(function() {$(document.querySelector('.login-modal-staff')).modal('toggle')}, 3000);
+                        headerSwitch()
+                        console.log(data);
+                    } else {
+                        console.log(data);
+                    }
+                },
+                error: function(data) {
+                    $("#staff_login_submit").removeClass('disabled') 
+                    if (data.responseJSON.errors[0].msg == 'login_fail_email') {
+                        $("#staff_email").css({
+                            "border": "2px solid red",
+                            "box-shadow": "0 0 3px red"
+                        });
+                    } else if (data.responseJSON.errors[0].msg == 'login_fail_pass') {
+                        $("#staff_password").css({
                             "border": "2px solid red",
                             "box-shadow": "0 0 3px red"
                         }); 
