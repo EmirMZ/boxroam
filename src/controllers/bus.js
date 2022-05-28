@@ -10,9 +10,6 @@ exports.getBus = async (req, res) => {
            subtitle: "Daftar Bus",
            list: JSON.parse(JSON.stringify(rows))    
         }
-        // return res.status(200).json({
-        //     bus
-        // })
         return res.render("bus", {bus})
 
     } catch (error) {
@@ -20,8 +17,6 @@ exports.getBus = async (req, res) => {
             error: error.message
         })
     }
-    res.render("bus.ejs", { bus })
-    res.end()
 
 
 }

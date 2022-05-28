@@ -4,18 +4,7 @@ const {response} = require('express')
 
 exports.getBus = (res) => {
     const psql = "select * from app.Bus"
-
-    db.query(psql, (error, result) => {
-        if(error) return console.log("error", error);
-
-        const bus = {
-            title: "Bus Page",
-            subtitle: "Daftar Bus",
-            list: JSON.parse(JSON.stringify(result.rows)), // Data dari Database
-        }
-        res.render("bus.ejs", {bus})
-        res.end()
-    })
+    return db.query(psql)
 }
 
 exports.getBusById = (req) => {

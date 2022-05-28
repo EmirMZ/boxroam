@@ -2,13 +2,10 @@ const { response } = require("express");
 const { request } = require("express");
 const express = require("express")
 const router = express.Router()
-const Bus = require("../models/busModel")
 const {registerBus, getBus, getBusById, updateBusById, deleteBusById} = require('../controllers/bus')
 
 
-router.get('/getBus', (req, res) =>{
-    Bus.getBus(res)
-} )
+router.get('/getBus', getBus)
 
 router.get('/getBusById', getBusById)
 
