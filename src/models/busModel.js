@@ -12,8 +12,8 @@ exports.getBusById = (id, req) => {
     return db.query(psql)
 }
 
-exports.updateBusById = (id, req) => {
-    const {seats, depart_date, station_arr_id, time_table, position} = req.body
+exports.updateBusById = (req) => {
+    const {id, seats, depart_date, station_arr_id, time_table, position} = req.body
     const psql = format('update app.Bus set seats = %L, depart_time = now(), station_arr_id = \'{%s}\', time_table = \'{%s}\', position = %L where id = %L', seats, station_arr_id, time_table, position, id)
     return db.query(psql)
 }
