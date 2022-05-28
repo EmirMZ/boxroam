@@ -15,9 +15,13 @@ exports.getBusById = (id, req) => {
 exports.updateBusById = (id, req) => {
     const {seats, depart_date, station_arr_id, time_table, position} = req.body
     const psql = format('update app.Bus set seats = %L, depart_time = now(), station_arr_id = \'{%s}\', time_table = \'{%s}\', position = %L where id = %L', seats, station_arr_id, time_table, position, id)
-    console.log(psql)
     return db.query(psql)
+}
 
+exports.getBusByRoute = (req) => {
+    const {route_from, route_to} = req.body
+    const psql = format(`SELECT * FROM app.bus WHERE station_arr_id @> '{%s,%s}'`, route_from,route_to) 
+    return db.query(psql)
 }
 
 exports.ubahBusById = (id, res) => {
@@ -43,7 +47,6 @@ exports.deleteBusById = (req) => {
     return db.query(psql)
 }
 
-// masih knop gara-gara array
 exports.addBus = (req) => {
 
     const {seats, depart_date, station_arr_id, time_table, position} = req.body

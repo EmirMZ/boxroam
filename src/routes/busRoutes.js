@@ -2,18 +2,22 @@ const { response } = require("express");
 const { request } = require("express");
 const express = require("express")
 const router = express.Router()
-const Bus = require('../models/busModel')
-const {registerBus, getBus, getBusById, updateBusById, deleteBusById} = require('../controllers/bus')
+const {registerBus, getBus, getBusById, getBusByRoute, updateBusById, deleteBusById, updateBusByIdWeb} = require('../controllers/bus')
 
 
 router.get('/getBus', getBus)
 
 router.get('/getBusById/:id', getBusById)
 
+router.get('/updateBusById/:id', updateBusByIdWeb)
+
 router.get("/getBusById/:id/updateBusById/:id", (req, res) => {
     const id = req.params.id;
     Bus.ubahBusById(id, res);
   });
+
+
+router.get('/getBusByRoute', getBusByRoute)
 
 router.post('/addBus', registerBus)
 
