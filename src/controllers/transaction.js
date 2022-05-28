@@ -1,31 +1,23 @@
-//jika sudah divalidasi hak-hak akun, maka akan diberi function yang sesuai dibawah ini
+const db = require('../models/transactionModel')
 
-const db = require('../models/busModel')
-
-exports.getBus = async (req, res) => {
+exports.getTrans = async (req, res) => {
     try {
-        const {rows} = await db.getBus()
-        const bus = {
-           title: "Bus Page",
-           subtitle: "Daftar Bus",
-           list: JSON.parse(JSON.stringify(rows))    
-        }
+        const {rows} = await db.getTrans()
         return res.status(200).json({
-            bus
+            success: true,
+            users: rows
         })
     } catch (error) {
         res.status(500).json({
             error: error.message
         })
     }
-    res.render("bus", {bus})
-    res.end()
 }
 
 
-exports.getBusById = async (req, res) => {
+exports.getTransById = async (req, res) => {
     try {
-        const {rows} = await db.getBusById(req)
+        const {rows} = await db.getTransById(req)
         return res.status(200).json(rows[0])
     } catch (error) {
         res.status(500).json({
@@ -34,12 +26,12 @@ exports.getBusById = async (req, res) => {
     }
 }
 
-exports.updateBusById = async (req, res) => {
+exports.updateTransById = async (req, res) => {
     try {
-        await db.updateBusById(req)
+        await db.updateTransById(req)
         return res.status(200).json({
             success: true,
-            message: 'updated_bus'
+            message: 'updated_transaction'
     })
     } catch (error) {
         res.status(500).json({
@@ -48,12 +40,12 @@ exports.updateBusById = async (req, res) => {
     }
 }
 
-exports.deleteBusById = async (req, res) => {
+exports.deleteTransById = async (req, res) => {
     try {
-        await db.deleteBusById(req)
+        await db.deleteTransById(req)
         return res.status(200).json({
             success: true,
-            message: 'deleted_bus'
+            message: 'deleted_transaction'
     })
     } catch (error) {
         res.status(500).json({
@@ -64,13 +56,13 @@ exports.deleteBusById = async (req, res) => {
 
 
 //register untuk role manapun, hati hati untuk dilewatin validator dulu
-exports.registerBus = async (req, res) => {
+exports.addTrans = async (req, res) => {
     try {
-        await db.addBus(req)
+        await db.addTrans(req)
         
         return res.status(201).json({
             success: true,
-            message: 'inserted_bus'
+            message: 'inserted_transaction'
         })
         
     } catch (error) {
@@ -80,4 +72,3 @@ exports.registerBus = async (req, res) => {
         })
     }
 }
-

@@ -10,11 +10,22 @@ exports.getBus = () => {
 exports.getBusById = (req) => {
     const {id} = req.body
     const psql = format(`select * from app.Bus where id = %L`, id) 
-    console.log(req.body)
     return db.query(psql)
 }
 
+exports.updateBusById = (req) => {
+    const {seats, depart_date, route, time_table, position, id} = req.body
+    const psql = format('update app.Bus set seats = %L, depart_date = %L, route = \'{%s}\', time_table = %L, position = %L where id = %L', seats, depart_date, route, time_table, position, id)
+    console.log(psql)
+    return db.query(psql)
 
+}
+
+exports.deleteBusById = (req) => {
+    const {id} = req.body
+    const psql = format('delete from app.Bus where id = %L', id)
+    return db.query(psql)
+}
 
 // masih knop gara-gara array
 exports.addBus = (req) => {
