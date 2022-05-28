@@ -17,7 +17,10 @@ router.get("/getBusById/:id/updateBusById/:id", (req, res) => {
 
 router.post('/addBus', registerBus)
 
-router.post('/updateBusById', updateBusById)
+router.post('/updateBusById/:id', (req,res) => {
+  const {id} = req.params.id;
+  Bus.updateBusById(id, res)
+})
 
 router.post('/deleteBusById', deleteBusById)
 module.exports = router
