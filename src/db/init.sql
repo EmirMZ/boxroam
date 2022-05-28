@@ -51,13 +51,23 @@ CREATE TABLE Transaction
 
 CREATE TABLE Bus
 (
+  ID SERIAL PRIMARY KEY,
   Seats INT NOT NULL,
-  Depart_Date INT NOT NULL,
+  Depart_Time TIME NOT NULL,
   Station_Arr_ID INT[] NOT NULL,
   Time_Table INT[] NOT NULL,
-  Position INT NOT NULL,
-  ID SERIAL PRIMARY KEY
+  Position INT NOT NULL
 );
+
+INSERT INTO app.Bus (seats, depart_time, station_arr_id, time_table, position) VALUES 
+(28,'07:00','{12,9,11}','{1,3}',1),
+(28,'08:00','{6,11,9}','{2,3}',1),
+(17,'09:00','{12,6,8}','{3,2}',1),
+(17,'10:00','{6,11,7}','{2,3}',1),
+(23,'11:00','{11,10}','{3}',1),
+(23,'12:00','{9,5}','{4}',1),
+(23,'13:00','{10,5}','{4}',1);
+
 
 CREATE TABLE Station
 (
