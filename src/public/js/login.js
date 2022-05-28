@@ -60,7 +60,7 @@ $(function() {
 
                         slideFadeOut($(document.querySelectorAll('.login-modal-form')))
                         slideFadeIn($(document.querySelector('.checkmark-login')))
-                        setTimeout(function() {$(document.querySelector('#loginModalStaff')).modal('toggle')}, 3000);
+                        setTimeout(function() {$(document.querySelector('#loginModal')).modal('toggle')}, 3000);
                         headerSwitch()
                         console.log(data);
                     } else {
