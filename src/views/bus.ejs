@@ -81,12 +81,13 @@
           <table class="table mt-3">
             <thead>
               <tr>
-                <th scope="col">Id</th>
+                <th scope="col">No</th>
                 <th scope="col">Seats</th>
                 <th scope="col">Depart date</th>
-                <th scope="col">Route</th>
+                <th scope="col">Station_Arr_ID</th>
                 <th scope="col">Time table</th>
                 <th scope="col">Position</th>
+                <th scope="col">Action</th>
               </tr>
             </thead>
             <% if (bus.list.length === 0) { %>
@@ -101,12 +102,11 @@
             <tbody>
               <tr>
                 <th><%= i+1 %></th>
-                <td><%= bus.list[i].id %></td>
                 <td><%= bus.list[i].seats %></td>
-                <td><%= bus.list[i].depart_date %>%</td>
-                <td><%= bus.list[i].route %>%</td>
-                <td><%= bus.list[i].time_table %>%</td>
-                <td><%= bus.list[i].position %>%</td>
+                <td><%= bus.list[i].depart_date %></td>
+                <td><%= bus.list[i].station_arr_id %></td>
+                <td><%= bus.list[i].time_table %></td>
+                <td><%= bus.list[i].position %></td>
                 <form action="/bus/removeBus" method="post">
                   <td>
                     <a
@@ -138,34 +138,34 @@
         </div>
         <div class="col-md-4">
           <!-- Forms Start -->
-          <h1 class="mt-3">TAMBAH DATA HERO</h1>
+          <h1 class="mt-3">TAMBAH DATA BUS</h1>
           <form action="/bus/addBus" class="mt-3" method="post">
             <div class="mb-3">
-              <label for="name" class="form-label fw-bold">Name</label>
+              <label for="seats" class="form-label fw-bold">Seats</label>
               <input
-                type="text"
+                type="number"
                 class="form-control"
-                id="name"
-                placeholder="Masukkan Nama"
+                id="seats"
+                placeholder="Jumlah seats"
                 required
-                name="name"
+                name="seats"
               />
             </div>
 
             <div class="mb-3">
-              <label for="role" class="form-label fw-bold">Role</label>
+              <label for="depart_date" class="form-label fw-bold">Depart date</label>
               <input
-                type="text"
+                type="number"
                 class="form-control"
-                id="role"
-                placeholder="Masukkan Role"
+                id="depart_date"
+                placeholder="Masukkan depart date"
                 required
-                name="role"
+                name="depart_date"
               />
             </div>
 
             <div class="mb-3">
-              <label for="winrate" class="form-label fw-bold">Winrate</label>
+              <label for="station_arr_id" class="form-label fw-bold">Station_Arr_ID</label>
               <input
                 type="number"
                 class="form-control"
