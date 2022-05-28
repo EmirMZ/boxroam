@@ -21,8 +21,13 @@ exports.getBus = async (req, res) => {
 
 exports.getBusById = async (req, res) => {
     try {
-        const {rows} = await db.getBusById(req)
-        return res.status(200).json(rows[0])
+        const {rows} = await db.getBusById(req.params['id'])
+        const bus = {
+            title: "Bus Page",
+            subtitle: "Daftar Bus",
+            list: JSON.parse(JSON.stringify(rows))    
+     }
+     return res.render("detailBus", {bus})
     } catch (error) {
         res.status(500).json({
             error: error.message
@@ -33,10 +38,8 @@ exports.getBusById = async (req, res) => {
 exports.updateBusById = async (req, res) => {
     try {
         await db.updateBusById(req)
-        return res.status(200).json({
-            success: true,
-            message: 'updated_bus'
-    })
+        return res.redirect('/bus/getBus')
+    
     } catch (error) {
         res.status(500).json({
             error: error.message
@@ -47,10 +50,7 @@ exports.updateBusById = async (req, res) => {
 exports.deleteBusById = async (req, res) => {
     try {
         await db.deleteBusById(req)
-        return res.status(200).json({
-            success: true,
-            message: 'deleted_bus'
-    })
+        return res.redirect('/bus/getBus')
     } catch (error) {
         res.status(500).json({
             error: error.message
@@ -64,10 +64,7 @@ exports.registerBus = async (req, res) => {
     try {
         await db.addBus(req)
         
-        return res.status(201).json({
-            success: true,
-            message: 'inserted_bus'
-        })
+        return res.redirect('/bus/getBus')
         
     } catch (error) {
         console.log(error.message)
