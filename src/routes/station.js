@@ -3,15 +3,15 @@ var express = require('express');
 var router = express.Router();
 var path = require('path');
 const { getStation, addStation, deleteStation, renameStation} = require('../controllers/station')
-//const {webAuth} = require('../middlewares/auth-middleware')
-
+//const {webAuth} = require('../middlewares/auth-middleware')const {operatorAuth} = require('../middlewares/auth-middleware')
+const {operatorAuth} = require('../middlewares/auth-middleware')
 
 router.get('/getstation', getStation);
 
-router.post('/addstation', addStation);
+router.post('/addstation',operatorAuth, addStation);
 
-router.put('/editstation', renameStation)
+router.put('/editstation',operatorAuth, renameStation)
 
-router.delete('/deletestation', deleteStation)
+router.delete('/deletestation',operatorAuth, deleteStation)
 
 module.exports = router

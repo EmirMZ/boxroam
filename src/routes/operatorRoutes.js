@@ -1,18 +1,18 @@
 const express = require("express")
 const router = express.Router()
 const {getOperator, getOperatorById, updateOperatorById, deleteOperatorById, addOperator, updateOperatorByIdWeb} = require('../controllers/operator')
+const {operatorAuth} = require('../middlewares/auth-middleware')
 
+router.get('/getOperator',operatorAuth, getOperator)
 
-router.get('/getOperator', getOperator)
+router.get('/getOperatorById/:id',operatorAuth, getOperatorById)
 
-router.get('/getOperatorById/:id', getOperatorById)
+router.get('/updateOperatorById/:id',operatorAuth, updateOperatorByIdWeb)
 
-router.get('/updateOperatorById/:id', updateOperatorByIdWeb)
+router.post('/addOperator',operatorAuth, addOperator)
 
-router.post('/addOperator', addOperator)
+router.post('/updateOperatorById/:id',operatorAuth, updateOperatorById)
 
-router.post('/updateOperatorById/:id', updateOperatorById)
-
-router.post('/deleteOperatorById', deleteOperatorById)
+router.post('/deleteOperatorById',operatorAuth, deleteOperatorById)
 
 module.exports = router

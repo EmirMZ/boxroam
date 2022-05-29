@@ -92,47 +92,44 @@ $(function() {
                 "name": user_name,
                 "email": email,
                 "phoneNumber": phone,
-                "password": password,
                 "gender": gender,
                 "address": address,
                 "role": role
             }))
-            // $.ajax({
-            //     type: "POST",
-            //     url: "/api/register",
-            //     data: JSON.stringify({                   
-            //         "name": user_name,
-            //         "email": email,
-            //         "phoneNumber": phone,
-            //         "password": password,
-            //         "gender": gender,
-            //         "address": address,
-            //         "role": role
-            //     }),
-            //     contentType: "application/json; charset=utf-8",
-            //     dataType: "json",
-            //     success: function(data) {
-            //         if (data.message == 'register_success') {
-            //             $("form")[0].reset();
-            //             $('input[type="text"],input[type="password"]').css({
-            //                 "border": "2px solid #00F5FF",
-            //                 "box-shadow": "0 0 5px #00F5FF"
-            //             });
+            $.ajax({
+                type: "POST",
+                url: "/api/editUser",
+                data: JSON.stringify({                   
+                    "name": user_name,
+                    "email": email,
+                    "phoneNumber": phone,
+                    "gender": gender,
+                    "address": address,
+                    "role": role
+                }),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function(data) {
+                    if (data.message == 'edituser_success') {
+                        $("form")[0].reset();
+                        $('input[type="text"],input[type="password"]').css({
+                            "border": "2px solid #00F5FF",
+                            "box-shadow": "0 0 5px #00F5FF"
+                        });
                         
-            //             closeSuccess();
-            //             headerSwitch()
-            //             console.log(data);
-            //         } else {
-            //             console.log(data);
-            //         }
-            //     },
-            //     error: function(data) {
-            //         slideFadeIn($(document.querySelector('.error-message')))
-            //         $('#error_message').text(data.responseJSON.errors[0].msg)
-            //         $('button[id="edit_user_submit"]').removeClass('disabled')
+                        $('button[id="edit_user_submit"]').removeClass('disabled')
+                        console.log(data);
+                    } else {
+                        console.log(data);
+                    }
+                },
+                error: function(data) {
+                    slideFadeIn($(document.querySelector('.error-message')))
+                    $('#error_message').text(data.responseJSON.errors[0].msg)
+                    $('button[id="edit_user_submit"]').removeClass('disabled')
 
-            //     }
-            // })
+                }
+            })
         }
     }));
 });

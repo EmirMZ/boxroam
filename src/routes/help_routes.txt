@@ -1,4 +1,0 @@
-1.ini berisi function yang akan dipanggil oleh express jika ada yang akses url tertentu
-2.tujuannya adalah menyediakan route (seperti  www.abc.com/user atau  www.abc.com/login dll) sebuah function yang akan mempassing ke controller
-3.alasannya karena dalam controller bisa saja banyak subfunction seperti user.create atau user.delete yang butuh routenya sendiri
-4.makanya dibuat ini biar tidak campur aduk
