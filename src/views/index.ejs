@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&family=Viga&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
+      crossorigin="anonymous"
+    />
+    <!-- Bootstrap Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.2/font/bootstrap-icons.css"
+    />
+    <!-- My CSS -->
+    <style>
+      body {
+        font-family: "Poppins", sans-serif;
+        background-color: #003566;
+      }
+      .main {
+        color: #fff;
+      }
+      h1 {
+        font-family: "Viga";
+      }
+      .main h1 span {
+        color: #ffc300;
+      }
+      .btn-warning {
+        background-color: #ffc300;
+      }
+    </style>
+
+    <title>HOME PAGE</title>
+  </head>
+  <body>
+    <!-- Contents Section Start -->
+    <section class="main align-self-center">
+      <div class="container py-5">
+        <div class="row">
+          <div class="col-lg-6 text-center align-self-center">
+            <h1 class="text-uppercase">
+              Admin Dashboard
+            </h1>
+            <p class="fs-5">
+              Pilih database yang diinginkan
+            </p>
+            <a href="/bus/getBus" class="btn btn-warning mx-2 fw-semibold">Bus</a>
+            <a href="/transaction/getTrans" class="btn btn-warning mx-2 fw-semibold"
+              >Transaksi</a>
+            <a href="/user/getUser" class="btn btn-warning mx-2 fw-semibold">User</a>                  
+            <a href="/operator/getOperator" class="btn btn-warning mx-2 fw-semibold">Operator</a>
+          </div>
+          <div class="col-lg-6">
+            <div class="px-5 py-5 rounded-4">
+              <img
+                src="https://www.welovedaily.com/media/pages/resources/design-trend-2020-3d-illustrations/355155439-1631837774/image_processing20200513-3153-i6uifc.png"
+                alt="Image Error"
+                class="px-4 py-4 img-fluid"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Contents Section End -->
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

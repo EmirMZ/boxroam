@@ -31,7 +31,7 @@ exports.addOperator = (req, hashedPassword) => {
 
     const {shift, name, email} = req.body
 
-    const dbquery = format('insert into app.Operator (shift, name, email, password) values (%L, %L, %L, %L)',shift, name, email, hashedPassword)
+    const dbquery = format('insert into app.Operator (shift, name, email, password) values (%L, %L, %L, %L)',shift, name, email, hashedPassword, gender, phone, address)
     console.log(dbquery)
     const psql = db.query (dbquery)
     return psql

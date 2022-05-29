@@ -57,6 +57,9 @@ app.use('/transaction', transactionRoutes)
 app.use('/api', station)
 app.use('/user', userRoutes)
 app.use('/operator', operatorRoutes)
+app.get('/homeAdmin', (req, res) => {
+    res.render("index")
+})
 
 const appStart = () => {
     try {
