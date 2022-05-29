@@ -8,5 +8,7 @@ module.exports = {
     SERVER_URL: process.env.SERVER_URL,
     CLIENT_URL: process.env.CLIENT_URL,
     SECRET: process.env.SECRET,
-    DATABASE_URL: process.env.DATABASE_URL
+    DATABASE_URL: process.env.DATABASE_URL,
+    PAYDIA_ID : process.env.PAYDIA_KEY,
+    PAYDIA_MERCHANT : process.env.PAYDIA_MERCHANT
 }

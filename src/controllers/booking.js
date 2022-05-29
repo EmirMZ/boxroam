@@ -3,6 +3,7 @@ const {SECRET} = require('../constants');
 const db = require('../models/busModel');
 const dbBooking = require('../models/bookingModel');
 const pricing = require('../helper/pricing')
+const qrstuff = require('./executetransaction')
 
 function numdiff (num1, num2) {
     if (num1 > num2) {
@@ -74,6 +75,15 @@ exports.addBooking = async (req, res) => {
         const booking_id = await dbBooking.addBooking(bookingvars)
 
 
+        var request ={
+            'bank_transaction_number' : Math.floor(Math.random() * 100000) + 1, 
+            'price': bus_arr[0].price, 
+        }
+    
+        qrstuff.getQR(request)
+    
+        // var transaction_id = await db.addTrans(request)
+        await dbBooking.addBookingTransaction(transaction_id.rows[0].id,booking_id.rows[0].id)
 
         if(!rows.length){
             return res.status(500).json({

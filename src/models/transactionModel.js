@@ -25,12 +25,11 @@ exports.deleteTransById = (req) => {
     return db.query(psql)
 }
 
-// masih knop gara-gara array
 exports.addTrans = (req) => {
 
-    const {bank_transaction_number, price, date} = req.body
+    const {bank_transaction_number, price} = req.body
 
-    const dbquery = format('insert into app.Transaction (bank_transaction_number, price, date) values (%L, %L, %L)', bank_transaction_number, price, date)
+    const dbquery = format('insert into app.Transaction (bank_transaction_number, price, date) values (%L, %L, now()) RETURNING id', bank_transaction_number, price)
     console.log(dbquery)
     const psql = db.query (dbquery)
     return psql

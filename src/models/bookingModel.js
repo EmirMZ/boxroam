@@ -20,6 +20,10 @@ exports.addBooking = (bookingvars) =>{
     return db.query(dbquery)
 }
 
+exports.addBookingTransaction = (book_id,transaction_id) =>{
+    const dbquery = format('update app.booking set position = %L where id = %L', transaction_id,book_id);
+    return db.query(dbquery)
+}
 
 exports.deleteBookingByIDandPassengerId = (passenger_id,id) =>{
     const dbquery = format('delete from app.booking where id = %L AND passenger_id', id, passenger_id);

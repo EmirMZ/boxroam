@@ -51,6 +51,7 @@ var userRoutes = require('./routes/userRoutes')
 var operatorRoutes = require('./routes/operatorRoutes')
 var bookingRoutes = require('./routes/bookingRoutes')
 
+
 app.use('/', frontEnd)
 app.use('/api', authRoutes)
 app.use('/bus', busRoutes)
