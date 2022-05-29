@@ -30,7 +30,19 @@ exports.deleteUserById = (req) => {
 exports.addUser = (req, hashedPassword) => {
 
     const {name, email, gender, phone, address} = req.body
-
+    switch (gender) {
+        case 1:
+            gender = 'male';
+            break;
+        case 2:
+            gender ='female'
+            break;
+        case 3:
+            gender = 'other'
+            break;
+        default:
+            break;
+    }
     const dbquery = format('insert into app.Passenger (name, email, password, gender, phone, address) values (%L, %L, %L, %L, %L, %L)', name, email, hashedPassword, gender, phone, address)
     console.log(dbquery)
     const psql = db.query (dbquery)
