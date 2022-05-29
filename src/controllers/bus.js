@@ -8,6 +8,7 @@ const moment = require('moment')
 exports.getBus = async (req, res) => {
     try {
         const {rows} = await db.getBus()
+       
         const bus = {
            title: "Bus Page",
            subtitle: "Daftar Bus",
@@ -21,16 +22,37 @@ exports.getBus = async (req, res) => {
     }
 }
 
+exports.getBusPassenger = async (req, res) => {
+    try {
+        const {rows} = await db.getBusPassenger(req)
+        const penumpang = {
+           title: "Detail Bus Page",
+           subtitle: "Detail Bus Passenger",
+           list: JSON.parse(JSON.stringify(rows))    
+    }
+    return res.render("detailBus", {penumpang})
+    } catch (error) {
+        res.status(500).json({
+            error: error.message
+        })
+    }
+}
 
 exports.getBusById = async (req, res) => {
     try {
         const {rows} = await db.getBusById(req.params['id'])
+        const {rows1} = await db.getBusPassenger(rows[0].id)
+        const penumpang = {
+           title: "Detail Bus Page",
+           subtitle: "Detail Bus Passenger",
+           list: JSON.parse(JSON.stringify(rows1))    
+    }
         const bus = {
             title: "Bus Page",
             subtitle: "Daftar Bus",
             list: JSON.parse(JSON.stringify(rows))    
      }
-     return res.render("detailBus", {bus})
+     return res.render("detailBus", {bus, penumpang})
     } catch (error) {
         res.status(500).json({ 
             error: error.message
