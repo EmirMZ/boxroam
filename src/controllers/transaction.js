@@ -3,10 +3,12 @@ const db = require('../models/transactionModel')
 exports.getTrans = async (req, res) => {
     try {
         const {rows} = await db.getTrans()
-        return res.status(200).json({
-            success: true,
-            users: rows
-        })
+        const trans = {
+            title: "Transaction Page",
+            subtitle: "Daftar Transaction",
+            list: JSON.parse(JSON.stringify(rows))  
+        }
+        return res.render("transaction", {trans})
     } catch (error) {
         res.status(500).json({
             error: error.message
@@ -17,8 +19,29 @@ exports.getTrans = async (req, res) => {
 
 exports.getTransById = async (req, res) => {
     try {
-        const {rows} = await db.getTransById(req)
-        return res.status(200).json(rows[0])
+        const {rows} = await db.getTransById(req.params['id'])
+        const trans = {
+            title: "Transaction Page",
+            subtitle: "Daftar Transaction",
+            list: JSON.parse(JSON.stringify(rows))  
+        }
+        return res.render("detailTransaction", {trans})
+    } catch (error) {
+        res.status(500).json({
+            error: error.message
+        })
+    }
+}
+
+exports.updateTransByIdWeb = async (req, res) => {
+    try {
+        const {rows} = await db.getTransById(req.params['id'])
+        const trans = {
+            title: "Transaction Page",
+            subtitle: "Daftar Transaction",
+            list: JSON.parse(JSON.stringify(rows))    
+     }
+     return res.render("updateTransaction", {trans})
     } catch (error) {
         res.status(500).json({
             error: error.message
@@ -29,10 +52,7 @@ exports.getTransById = async (req, res) => {
 exports.updateTransById = async (req, res) => {
     try {
         await db.updateTransById(req)
-        return res.status(200).json({
-            success: true,
-            message: 'updated_transaction'
-    })
+        return res.redirect('/transaction/getTrans')
     } catch (error) {
         res.status(500).json({
             error: error.message
@@ -43,10 +63,7 @@ exports.updateTransById = async (req, res) => {
 exports.deleteTransById = async (req, res) => {
     try {
         await db.deleteTransById(req)
-        return res.status(200).json({
-            success: true,
-            message: 'deleted_transaction'
-    })
+        return res.redirect('/transaction/getTrans')
     } catch (error) {
         res.status(500).json({
             error: error.message
@@ -60,10 +77,7 @@ exports.addTrans = async (req, res) => {
     try {
         await db.addTrans(req)
         
-        return res.status(201).json({
-            success: true,
-            message: 'inserted_transaction'
-        })
+        return res.redirect('/transaction/getTrans')
         
     } catch (error) {
         console.log(error.message)
