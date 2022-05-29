@@ -30,7 +30,7 @@
     </style>
     <link rel="stylesheet" href="css/style.css" />
 
-    <title><%= trans.title %></title>
+    <title><%= user.title %></title>
   </head>
   <body>
     <!-- Nav Section Start -->
@@ -63,6 +63,9 @@
             <li class="nav-item">
               <a class="nav-link text-white" href="/transaction/getTrans">Transaction</a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="/user/getUser">User</a>
+            </li>
           </ul>
         </div>
       </div>
@@ -74,64 +77,30 @@
 
     <div class="container mt-3">
       <div class="row">
-        <div class="col-md-4">
-          <h1><%= trans.subtitle %></h1>
+        <div class="col-md-8">
+          <h1 class="mb-5"><%= user.subtitle %></h1>
 
-          <!-- Forms Start -->
+          <!-- Cards Start -->
 
-          <form action="/transaction/updateTransById/<%= trans.list[0].id %>" class="mt-3" method="post">
-            <input
-              type="text"
-              class="form-control"
-              id="id"
-              hidden
-              name="id"
-              value="<%= trans.list[0].id %>"
-            />
-
-            <div class="mb-3">
-              <label for="bank_transaction_number" class="form-label fw-bold">Bank Transation Number</label>
-              <input
-                type="number"
-                class="form-control"
-                id="bank_transaction_number"
-                placeholder="Bank Transaction Number"
-                required
-                name="bank_transaction_number"
-              />
+          <div class="card" style="width: 18rem">
+            <div class="card-body">
+              <h5 class="card-title"><%= user.list[0].id %></h5>
+              <span class="card-text">Name<%= user.list[0].name %></span>
+              <h6 class="card-subtitle mt-3 mb-3 text-muted">
+                email: <%= user.list[0].email %> 
+              </h6>
+              <a href="/user/getUser" class="btn btn-success badge rounded-pill"
+                >BACK</a
+              >
+              <a
+                href="/user/updateUserById/<%= user.list[0].id %>"
+                class="btn btn-primary badge rounded-pill"
+                >UBAH</a
+              >
             </div>
-            <div class="mb-3">
-              <label for="price" class="form-label fw-bold">Price</label>
-              <input
-                type="number"
-                class="form-control"
-                id="price"
-                placeholder="Price"
-                required
-                name="price"
-              />
-            </div>
-            <div class="mb-3">
-              <label for="date" class="form-label fw-bold">Date</label>
-              <input
-                type="date"
-                class="form-control"
-                id="date"
-                placeholder="Input Date"
-                required
-                name="date"
-              />
-            </div>
-            <button
-              type="submit"
-              onclick="return confirm('Apakah anda ingin mengubah Data <%= trans.list[0].id %> ?')"
-              class="btn btn-primary"
-            >
-              UBAH DATA
-            </button>
-          </form>
+          </div>
 
-          <!-- Froms End -->
+          <!-- Cards End -->
         </div>
       </div>
     </div>

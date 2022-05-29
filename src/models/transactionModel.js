@@ -13,7 +13,7 @@ exports.getTransById = (id, req) => {
 
 exports.updateTransById = (req) => {
     const {bank_transaction_number, price, date, id} = req.body
-    const psql = format('update app.Transaction set bank_transaction_number = %L, price = %L, date = now() where id = %L', bank_transaction_number, price, id)
+    const psql = format('update app.Transaction set bank_transaction_number = %L, price = %L, date = %L where id = %L', bank_transaction_number, price, date, id)
     console.log(psql)
     return db.query(psql)
 
@@ -30,7 +30,7 @@ exports.addTrans = (req) => {
 
     const {bank_transaction_number, price, date} = req.body
 
-    const dbquery = format('insert into app.Transaction (bank_transaction_number, price, date) values (%L, %L, now())', bank_transaction_number, price, date)
+    const dbquery = format('insert into app.Transaction (bank_transaction_number, price, date) values (%L, %L, %L)', bank_transaction_number, price, date)
     console.log(dbquery)
     const psql = db.query (dbquery)
     return psql
