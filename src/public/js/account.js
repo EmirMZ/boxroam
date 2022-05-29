@@ -3,7 +3,17 @@ $(function() {
         $(document.querySelectorAll('#user_name')).text(data.name)
         $(document.querySelectorAll('#user_email')).text(data.email)
         $(document.querySelectorAll('#user_phone')).text(data.phone)
-        $(document.querySelectorAll('#user_gender')).text(data.gender)
+
+
+        if(data.gender == 1){
+            $(document.querySelectorAll('#user_gender')).text('Male')
+        }else if(data.gender == 2){
+            $(document.querySelectorAll('#user_gender')).text('Female')
+        }else if(data.gender == 2){
+            $(document.querySelectorAll('#user_gender')).text('Other')
+        }else{
+            $(document.querySelectorAll('#user_gender')).text('Unknown')
+        }
         $(document.querySelectorAll('#user_address')).text(data.address)
         $(document.querySelectorAll('#edit_user_name')).val(data.name)
         $(document.querySelectorAll('#edit_user_email')).val(data.email)
