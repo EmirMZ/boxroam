@@ -11,9 +11,8 @@ router.get('/getBusById/:id', getBusById)
 
 router.get('/updateBusById/:id', updateBusByIdWeb)
 
-router.get('/getBusByRoute', getBusByRoute)
+router.post('/getBusByRoute', getBusByRoute)
 
-router.get('/getBusByRoute', getBusByRoute)
 
 router.post('/addBus', registerBus)
 
