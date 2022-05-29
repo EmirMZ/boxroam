@@ -49,6 +49,7 @@ var transactionRoutes = require('./routes/transactionRoutes')
 var station = require('./routes/station')
 var userRoutes = require('./routes/userRoutes')
 var operatorRoutes = require('./routes/operatorRoutes')
+var bookingRoutes = require('./routes/bookingRoutes')
 
 app.use('/', frontEnd)
 app.use('/api', authRoutes)
@@ -60,6 +61,8 @@ app.use('/operator', operatorRoutes)
 app.get('/homeAdmin', (req, res) => {
     res.render("index")
 })
+
+app.use('/api', bookingRoutes)
 
 const appStart = () => {
     try {
