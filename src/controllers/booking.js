@@ -83,8 +83,12 @@ exports.addBooking = async (req, res) => {
         qrstuff.getQR(request)
     
         // var transaction_id = await db.addTrans(request)
-        await dbBooking.addBookingTransaction(transaction_id.rows[0].id,booking_id.rows[0].id)
 
+        try{
+            await dbBooking.addBookingTransaction(transaction_id.rows[0].id,booking_id.rows[0].id)
+        }catch(e){
+
+        }
         if(!rows.length){
             return res.status(500).json({
                 error: 'booking_failed'

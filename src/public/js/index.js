@@ -24,7 +24,7 @@ $(function() {
         if(doesHttpOnlyCookieExist('token')){
             addBooking($from_option.val(),$to_option.val(),e.currentTarget.id.replace('book_button_','')).then((value)=>{
                 if(value.status == 'booking_success'){
-                    
+                    alert('sucess, your booking number is ' + value.booking_id)
                 }else{
                     console.log('booking failed')
                     $(document.querySelectorAll('.book_this_button')).removeClass('disabled')
