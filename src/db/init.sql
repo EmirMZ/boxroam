@@ -97,7 +97,7 @@ CREATE TABLE Booking
   Date DATE NOT NULL,
   ID SERIAL PRIMARY KEY,
   Passenger_ID INT NOT NULL,
-  Transaction_ID INT NOT NULL,
+  Transaction_ID INT,
   Bus_ID INT NOT NULL
 );
 CREATE TABLE Transaction

@@ -84,9 +84,6 @@ exports.getBusByRoute = async (req, res) => {
 
         let len = rows.length
         let i = 0
-
-        len = rows.length
-        i = 0
         while(i < len){
 
 
