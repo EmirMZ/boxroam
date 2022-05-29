@@ -3,7 +3,7 @@ const router = express.Router()
 const {getUser, getUserById, updateUserById, deleteUserById, addUser, updateUserByIdWeb} = require('../controllers/user')
 const {operatorAuth} = require('../middlewares/auth-middleware')
 
-router.get('/getUser', getUser)
+router.get('/getUser',operatorAuth, getUser)
 
 router.get('/getUserById/:id',operatorAuth, getUserById)
 

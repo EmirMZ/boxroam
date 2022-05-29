@@ -11,6 +11,7 @@ function dashboardButtonSwitch(){
     retrieveAccount().then(result => {
         if(result.role == 'driver' || result.role == 'operator'){
             $(document.querySelector('#dashboard_button')).removeClass('disp-hide');
+            $(document.querySelector('#account_button')).addClass('disp-hide');
         }
     }).catch(err => {
         // got error
