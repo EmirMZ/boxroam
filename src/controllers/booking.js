@@ -65,7 +65,15 @@ exports.addBooking = async (req, res) => {
             "passenger_id" : userCred.id,
             "bus_id" : bus_arr[0].id
         }
+        var otherPassenger = await db.getBusPassenger(bus_arr[0].id);
+        if(otherPassenger.rows >= bus_arr[0].seats){
+            return res.status(500).json({
+                error: 'booking_failed_bus_full'
+            })
+        }
         const booking_id = await dbBooking.addBooking(bookingvars)
+
+
 
         if(!rows.length){
             return res.status(500).json({

@@ -45,7 +45,7 @@ const driverRole = check('role').custom((value) => {
 })
 
 //gender
-const gender = check('gender').isNumeric().withMessage('Please provide a valid gender (male, female, other) = (1, 2, 3)')
+const gender = check('gender').isNumeric().withMessage('Please provide a valid gender')
 
 //phone number
 const phoneNumber = check('phonenumber').isMobilePhone(['id-ID']).withMessage('Please provide a valid Indonesia phone number')
@@ -77,6 +77,7 @@ const loginFieldsCheck = check('email').custom(async(value, {req}) => {
 
 module.exports = {
     passengerRegisterValidation: [gender, passengerRole, email, password, emailExist, phoneNumber],
+    passengerEditValidation: [gender, passengerRole, password,  phoneNumber],
     operatorRegisterValidation: [operatorRole, email, password, emailExist, phoneNumber],
     driverRegisterValidation: [driverRole, email, password, emailExist, phoneNumber],
     loginValidation: [loginFieldsCheck],

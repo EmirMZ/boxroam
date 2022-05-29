@@ -91,33 +91,28 @@ $(function() {
             console.log(JSON.stringify({                   
                 "name": user_name,
                 "email": email,
-                "phoneNumber": phone,
+                "phonenumber": phone,
                 "gender": gender,
                 "address": address,
                 "role": role
             }))
             $.ajax({
                 type: "POST",
-                url: "/api/editUser",
+                url: "/api/editProfile",
                 data: JSON.stringify({                   
                     "name": user_name,
                     "email": email,
-                    "phoneNumber": phone,
+                    "phonenumber": phone,
                     "gender": gender,
                     "address": address,
+                    "password":password,
                     "role": role
                 }),
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function(data) {
-                    if (data.message == 'edituser_success') {
-                        $("form")[0].reset();
-                        $('input[type="text"],input[type="password"]').css({
-                            "border": "2px solid #00F5FF",
-                            "box-shadow": "0 0 5px #00F5FF"
-                        });
-                        
-                        $('button[id="edit_user_submit"]').removeClass('disabled')
+                    if (data.message == 'edit_success') {
+                        window.location.reload(true)
                         console.log(data);
                     } else {
                         console.log(data);
@@ -125,7 +120,7 @@ $(function() {
                 },
                 error: function(data) {
                     slideFadeIn($(document.querySelector('.error-message')))
-                    $('#error_message').text(data.responseJSON.errors[0].msg)
+                    $('#error_message_edit').text(data.responseJSON.errors[0].msg)
                     $('button[id="edit_user_submit"]').removeClass('disabled')
 
                 }

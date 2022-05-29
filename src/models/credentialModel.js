@@ -25,6 +25,12 @@ exports.getAccountFromID = (role, id) =>{
     return db.query(dbquery)
 }
 
+exports.editProfile = (req,password,id) =>{
+    const { name,  gender, phonenumber, address} = req.body
+    const dbquery = format('update app.passenger set password = %L,name = %L, gender = %L, phone = %L, address = %L where id = %L',password, name, gender, phonenumber, address,id);
+    return db.query(dbquery)
+}
+
 exports.listAccount = (role) =>{
     const dbquery = format('select id, email from app.%I', role)
     console.log(db.query(dbquery))

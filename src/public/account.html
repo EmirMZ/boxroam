@@ -49,28 +49,7 @@
               <p id="user_address" class="py-2 text-muted"></p>
             </div>
           </div>
-          <div id="info_tripgraph" class="col-12 bg-white px-3 pb-2">
-            <h6 class="d-flex align-items-center mb-3 fw-bold py-3">Trip Stats</h6>
-            <small>January</small>
-            <div class="progress mb-3" style="height: 5px">
-              <div class="progress-bar bg-primary" role="progressbar" style="width: 60%" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-            <small>February</small>
-            <div class="progress mb-3" style="height: 5px">
-              <div class="progress-bar bg-primary" role="progressbar" style="width: 72%" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-            <small>March</small>
-            <div class="progress mb-3" style="height: 5px">
-              <div class="progress-bar bg-primary" role="progressbar" style="width: 50%" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-            <small>April</small>
-            <div class="progress mb-3" style="height: 5px">
-              <div class="progress-bar bg-primary" role="progressbar" style="width: 90%" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-            <small>June</small>
-            <div class="progress mb-3" style="height: 5px">
-              <div class="progress-bar bg-primary" role="progressbar" style="width: 80%" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
+          <div id="info_booking" class="col-12 bg-white px-3 pb-2 disp-hide">
           </div>
           <div id="edit_user" class="bg-white"  style="display: none;">
 
@@ -81,16 +60,17 @@
                     <input type="text" class=" email-text form-control" id="edit_user_name" placeholder="Your name..."></input>
                   </div>
                   <div class="form-group mb-3 d-flex align-items-center ">
-                    <p class="py-2 col-2 text-end px-1">Email</p>
-                    <input type="email" class="email-text form-control" id="edit_user_email" placeholder="Your email address..." autocomplete="username email">
-                  </div>
-                  <div class="form-group mb-3 d-flex align-items-center ">
                     <p class="py-2 col-2 text-end px-1">Phone Number</p>
                     <input type="text" class="email-text form-control" id="edit_user_phone" placeholder="Your phone number...">
                   </div>
                   <div class="form-group mb-3 d-flex align-items-center ">
                     <p class="py-2 col-2 text-end px-1">Gender</p>
                     <input type="text" class="email-text form-control" id="edit_user_gender" placeholder="Your gender...">
+                    <select id="edit_user_gender" class="form-select" aria-label="Default select example">
+                      <option value="1" selected>Male</option>
+                      <option value="2">Female</option>
+                      <option value="3">Other</option>
+                    </select>
                   </div>
                   <div class="form-group mb-3 d-flex align-items-center ">
                     <p class="py-2 col-2 text-end px-1">Address</p>
@@ -102,32 +82,11 @@
                   </div>
                   <input type="hidden" id="edit_user_role" value="passenger">
                   <div class="form-group mb-3 disp-hide error-message">
-                    <h1 class = "error-text" id="error_message"></h1>
+                    <h1 class = "error-text" id="error_message_edit"></h1>
                   </div>
                   <button type="button" id="edit_user_submit" class="edit_user_submit btn btn-info btn-block btn-round submit">Register</button>
                 </form>
               </div>
-
-                <!-- <div class="d-flex align-items-center justify-content-between border-bottom">
-                    <p class="py-2">Full Name</p>
-                    <p id="edit_user_name" class="py-2 text-muted"></p>
-                </div>
-                <div class="d-flex align-items-center justify-content-between border-bottom">
-                    <p class="py-2">Email</p>
-                    <p id="edit_user_email" class="py-2 text-muted"></p>
-                </div>
-                <div class="d-flex align-items-center justify-content-between border-bottom">
-                    <p class="py-2">Phone</p>
-                    <p id="edit_user_phone" class="py-2 text-muted"></p>
-                </div>
-                <div class="d-flex align-items-center justify-content-between border-bottom">
-                    <p class="py-2">Gender</p>
-                    <p id="edit_user_gender" class="py-2 text-muted"></p>
-                </div>
-                <div class="d-flex align-items-center justify-content-between">
-                    <p class="py-2">Address</p>
-                    <p id="edit_user_address" class="py-2 text-muted"></p>
-                </div> -->
             </form>
           </div>
         </div>

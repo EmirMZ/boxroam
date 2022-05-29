@@ -25,11 +25,38 @@ exports.register = async (req, res) => {
     const {password} = req.body
     try {
         const hashedPassword = await hash(password, 10)
+
         await dbAccess.register(req,hashedPassword)
+        const user = await dbAccess.getAccount(req.body.role, req.body.email)
+        let payload = {
+            id: user.rows[0].id,
+            role: req.body.role
+        }
+
+        const token = await jwt.sign(payload, SECRET)
+
+        return res.status(200).cookie('token', token, {httpOnly: true,sameSite: true}).json({
+            success: true,
+            message: 'register_success'
+        })
+        
+    } catch (error) {
+        console.log(error.message)
+        res.status(500).json({
+            error: error.message
+        })
+    }
+}
+exports.editProfile = async (req, res) => {
+    userCred = await jwt.verify(req.cookies.token, SECRET)
+    const {password} = req.body
+    try {
+        const hashedPassword = await hash(password, 10)
+        await dbAccess.editProfile(req,hashedPassword,userCred.id)
         
         return res.status(201).json({
             success: true,
-            message: 'register_success'
+            message: 'edit_success'
         })
         
     } catch (error) {
