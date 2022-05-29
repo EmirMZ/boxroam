@@ -48,7 +48,7 @@ var busRoutes = require('./routes/busRoutes')
 var transactionRoutes = require('./routes/transactionRoutes')
 var station = require('./routes/station')
 var userRoutes = require('./routes/userRoutes')
-
+var operatorRoutes = require('./routes/operatorRoutes')
 
 app.use('/', frontEnd)
 app.use('/api', authRoutes)
@@ -56,6 +56,7 @@ app.use('/bus', busRoutes)
 app.use('/transaction', transactionRoutes)
 app.use('/api', station)
 app.use('/user', userRoutes)
+app.use('/operator', operatorRoutes)
 
 const appStart = () => {
     try {
