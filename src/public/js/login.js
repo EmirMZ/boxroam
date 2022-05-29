@@ -1,7 +1,4 @@
 $(function() {
-
-    
- 
     const slideFadeOut = (elem) => {
         const fade = { opacity: 0, transition: 'opacity 400ms' };
         elem.css(fade).slideUp();

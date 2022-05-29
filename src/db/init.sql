@@ -40,13 +40,7 @@ CREATE TABLE Passenger
   ID SERIAL PRIMARY KEY
 );
 
-CREATE TABLE Transaction
-(
-  Bank_Transaction_Number INT NOT NULL,
-  Price INT NOT NULL,
-  Date DATE NOT NULL,
-  ID SERIAL PRIMARY KEY
-);
+
 
 
 CREATE TABLE Bus
@@ -105,4 +99,11 @@ CREATE TABLE Booking
   Passenger_ID INT NOT NULL,
   Transaction_ID INT NOT NULL,
   Bus_ID INT NOT NULL
+);
+CREATE TABLE Transaction
+(
+  Bank_Transaction_Number INT NOT NULL,
+  Price INT NOT NULL,
+  Date DATE NOT NULL,
+  ID SERIAL PRIMARY KEY
 );

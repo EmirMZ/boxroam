@@ -49,9 +49,20 @@ exports.deleteBusById = (req) => {
 
 exports.addBus = (req) => {
 
-    const {seats, depart_date, station_arr_id, time_table, position} = req.body
+    const {seats, depart_time, station_arr_id, time_table, position} = req.body
 
-    const dbquery = format('insert into app.Bus (seats, depart_time, Station_Arr_ID, time_table, position) values (%L, now(), \'{%s}\', \'{%s}\', %L)', seats, station_arr_id, time_table, position)
+    var i = 0
+    var len = station_arr_id.length
+    while (i < len - 1){
+        i++
+        console.log(parseInt(station_arr_id[len - 1 - i]))
+        station_arr_id.push(parseInt(station_arr_id[len - 1 - i]))
+        time_table.push(parseInt(time_table[len - 1 - i]))
+        
+    }
+
+
+    const dbquery = format('insert into app.Bus (seats, depart_time, Station_Arr_ID, time_table, position) values (%L, %L, \'{%s}\', \'{%s}\', %L)', seats, depart_time, station_arr_id, time_table, position)
     console.log(dbquery)
     const psql = db.query (dbquery)
     return psql

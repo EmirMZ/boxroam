@@ -121,3 +121,13 @@ html, body {
     display: flex;
     align-items: end;
   }
+
+  .italic-bold{
+    font-weight: bold;
+    font-style: italic;
+  }
+
+  .card{
+    border-radius: 2rem;
+  }
+
