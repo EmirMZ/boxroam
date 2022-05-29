@@ -9,7 +9,7 @@ exports.listBooking = () =>{
 }
 
 exports.getBookingById = (id) =>{
-    const dbquery = format('select * from app.booking where passenger_id = %L',id);
+    const dbquery = format('select * from app.booking where passenger_id = %L AND Transaction_ID != Null',id);
     return db.query(dbquery)
 }
 

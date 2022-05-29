@@ -64,5 +64,11 @@ $(function(){
     });
 
 
+    $(document).on("click",'#logout_button',(function() {
+        logoutAccount().then(()=>{
+            window.location.reload(true)
+        })
+    }));
+
     
 });

@@ -20,11 +20,19 @@ $(function() {
 
     //<div class="card text-dark mb-2 container"><div class="card-body p-1"><div class="row"><div class="col my-auto "><h1 id="order_step_3_loading_text" class="card-title italic-bold">Loading your BOX</h1></div></div></div></div>
     $(document).on("click",'.book_this_button',(function(e){
+        $(document.querySelectorAll('.book_this_button')).addClass('disabled')
         if(doesHttpOnlyCookieExist('token')){
+            addBooking($from_option.val(),$to_option.val(),e.currentTarget.id.replace('book_button_','')).then((value)=>{
+                if(value.status == 'booking_success'){
+                    
+                }else{
+                    console.log('booking failed')
+                    $(document.querySelectorAll('.book_this_button')).removeClass('disabled')
+                }
+            })
         }else{
             $(document.querySelector('.login-modal')).modal('toggle')
         }
-        console.log(e.currentTarget.id.replace('book_button_',''))
 
     }))
     

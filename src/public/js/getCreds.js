@@ -28,20 +28,43 @@ function retrieveAccount() {
 }
 
 function logoutAccount() {
+    return new Promise((resolve,reject) =>{
         $.ajax({
             type: "GET",
             url: "/api/logout",
             xhrFields: {
                 withCredentials: true
             },
-            success: function () {
-                window.location = "/";
+            success: function (data) {
+                resolve(data);
             },
             error: function (error) {
-                console.log(error)
                 reject(error);
             }
         });
+    })
+}
 
+function addBooking(route_from,route_to,bus_id) {
+    return new Promise((resolve,reject) =>{
+        $.ajax({
+            type: "POST",
+            url: "/api/addBooking",
+            data:{
+                "route_from" : route_from,
+                "route_to" : route_to,
+                "bus_id" : bus_id
+            },
+            xhrFields: {
+                withCredentials: true
+            },
+            success: function (data) {
+                resolve(data);
+            },
+            error: function (error) {
+                reject(error);
+            }
+        });
+    })
 }
 

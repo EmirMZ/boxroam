@@ -12,7 +12,7 @@ router.get('/getBusById/:id',operatorAuth, getBusById)
 
 router.get('/updateBusById/:id',operatorAuth, updateBusByIdWeb)
 
-router.post('/getBusByRoute',operatorAuth, getBusByRoute)
+router.post('/getBusByRoute', getBusByRoute)
 
 router.post('/addBus',operatorAuth, registerBus)
 
