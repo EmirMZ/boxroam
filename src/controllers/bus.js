@@ -41,11 +41,11 @@ exports.getBusPassenger = async (req, res) => {
 exports.getBusById = async (req, res) => {
     try {
         const {rows} = await db.getBusById(req.params['id'])
-        const {rows1} = await db.getBusPassenger(rows[0].id)
+        const test = await db.getBusPassenger(rows[0].id)
         const penumpang = {
            title: "Detail Bus Page",
            subtitle: "Detail Bus Passenger",
-           list: JSON.parse(JSON.stringify(rows1))    
+           list: JSON.parse(JSON.stringify(test.rows))    
     }
         const bus = {
             title: "Bus Page",
