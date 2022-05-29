@@ -47,6 +47,12 @@ exports.deleteBusById = (req) => {
     return db.query(psql)
 }
 
+exports.getBusPassenger = (req) => {
+    const {id} = req.body
+    const psql = format('SELECT NAME FROM APP.PASSENGER WHERE ID IN(SELECT PASSENGER_ID FROM APP.BOOKING WHERE BUS_ID = %L)', id)
+    return db.query(psql)
+}
+
 exports.addBus = (req) => {
 
     const {seats, depart_time, station_arr_id, time_table, position} = req.body
