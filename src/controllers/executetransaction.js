@@ -13,6 +13,8 @@ exports.startQRIS = async(request) => {
         "ref": trans_id.rows[0].id,
         "callback": "https://boxroam.azurewebsites.net/api/callback",
         "expire": 5
+      },{
+        headers: { Authorization: `Bearer ${paydia.PAYDIA_ID}` }
       })
     .then(res => {
         console.log(`statusCode: ${res.status}`);
