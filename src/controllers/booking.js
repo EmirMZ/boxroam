@@ -76,11 +76,11 @@ exports.addBooking = async (req, res) => {
 
 
         var request ={
-            'bank_transaction_number' : Math.floor(Math.random() * 100000) + 1, 
+            'bank_transaction_number' : 0,
             'price': bus_arr[0].price, 
         }
     
-        qrstuff.getQR(request)
+        qrstuff.startQRIS(request)
     
         // var transaction_id = await db.addTrans(request)
 
