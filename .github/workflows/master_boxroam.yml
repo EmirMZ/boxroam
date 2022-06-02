@@ -52,5 +52,5 @@ jobs:
         with:
           app-name: 'BoxRoam'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_5232196F2D67408AA17014FD0665DDEB }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_B8FE4370572F425FB225A302D11BB163 }}
           package: .
