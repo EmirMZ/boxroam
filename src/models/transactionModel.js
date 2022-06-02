@@ -26,6 +26,7 @@ exports.deleteTransById = (req) => {
 }
 
 exports.addTrans = (req) => {
+    console.log(req)
 
     const {bank_transaction_number, price} = req
     const dbquery = format('insert into app.Transaction (bank_transaction_number, price, date) values (%L, %L, now()) RETURNING id', bank_transaction_number, price)
