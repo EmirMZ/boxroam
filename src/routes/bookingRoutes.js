@@ -8,6 +8,6 @@ const {userAuth} = require('../middlewares/auth-middleware')
 router.post('/addBooking', userAuth,addBooking)
 router.get('/getBooking', userAuth,showUserBooking)
 router.get('/deleteBooking', userAuth,DeleteUserBooking)
-router.get('/callback', gotCallback)
+router.post('/callback', gotCallback)
 
 module.exports = router
